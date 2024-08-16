@@ -142,7 +142,7 @@ exports.login=async(req,res)=>{
         const payload={
             email:email,
             id:user._id,
-            role:user.role
+            role:user.accountType
         }
         if(await bcrypt.compare(password,user.password)){
             const token=jwt.sign(payload,process.env.JWT_SECRET,{
