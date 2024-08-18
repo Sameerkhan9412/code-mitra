@@ -48,7 +48,8 @@ exports.sendOtp=async(req,res)=>{
         console.log("error while sending otp",error);
         return res.status(500).json({
             success:false,
-            message:"error while sending otp",error.message
+            message:"error while sending otp",
+            error:error.message
         })
     }
 }
@@ -110,7 +111,8 @@ exports.singup=async (req,result) => {
         console.log(error)
         return res.status(500).json({
             success:false,
-            message:"User cannot registered . Please try again"
+            message:"User cannot registered . Please try again",
+            error:error.message
         })
     }
     
@@ -173,7 +175,8 @@ exports.login=async(req,res)=>{
     } catch (error) {
         res.status(500).json({
             success:false,
-            message:'Login failure , please try again'
+            message:'Login failure , please try again',
+            error:error.message
         })
     }   
 }

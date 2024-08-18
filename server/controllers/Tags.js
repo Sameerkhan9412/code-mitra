@@ -21,7 +21,8 @@ exports.createTag=async(req,res)=>{
     } catch (error) {
         return res.status(500).json({
             success:false,
-            message:"something went wrong , please try again"
+            message:"something went wrong , please try again",
+            error:error.message
         })
     }
 }
@@ -40,7 +41,8 @@ exports.getAllTags=async(req,res)=>{
     } catch (error) {
        return res.status(500).json({
             success:false,
-            message:"something went wrong , please try again"
+            message:"something went wrong , please try again",
+            error:error.messages
         }) 
     }
 }
