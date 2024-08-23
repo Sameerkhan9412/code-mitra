@@ -1,6 +1,6 @@
 const jwt=require('jsonwebtoken')
 require('dotenv').config();
-const User=require('../models/User')
+const User=require('../models/Users')
 
 
 // auth
@@ -41,7 +41,7 @@ exports.auth=async(req,res,next)=>{
 
 
 // isStudent
-exports.isStudent=async(req,res,next){
+exports.isStudent=async(req,res,next)=>{
     try {
         if(req.user.accountType!=='Student'){
             return res.status(401).json({
@@ -62,7 +62,7 @@ exports.isStudent=async(req,res,next){
 
 // isInstructor
 
-exports.isInstructor=async(req,res,next){
+exports.isInstructor=async(req,res,next)=>{
     try {
         if(req.user.accountType!=='Instructor'){
             return res.status(401).json({
@@ -83,7 +83,7 @@ exports.isInstructor=async(req,res,next){
 
 // isAdmin
 
-exports.isAdmin=async(req,res,next){
+exports.isAdmin=async(req,res,next)=>{
     try {
         if(req.user.accountType!=='Admin'){
             return res.status(401).json({

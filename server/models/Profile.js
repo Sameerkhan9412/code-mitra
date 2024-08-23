@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 const profileSchema=new mongoose.Schema({
     gender:{
-        type:string,
+        type:String,
         enum:["Male","Female"]
     },
     dateOfBirth:{

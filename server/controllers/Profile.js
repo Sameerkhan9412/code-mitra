@@ -56,7 +56,7 @@ exports.deleteAccount=async(req,res)=>{
             })
         }
         // delete profile
-        await Profile.findByIdAndDelete(_id:userDetails.additionalDetails)
+        await Profile.findByIdAndDelete({_id:userDetails.additionalDetails})
         // delete user
         await User.findOneAndDelete({_id:id});
         return res.status(200).json({

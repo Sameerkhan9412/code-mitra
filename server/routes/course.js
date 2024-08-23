@@ -41,7 +41,7 @@ const {
 } = require("../controllers/RatingAndReview")
 
 // Importing Middlewares
-const { auth, isInstructor, isStudent, isAdmin } = require("../middleware/auth")
+const { auth, isInstructor, isStudent, isAdmin } = require("../middlewares/auth")
 
 // ********************************************************************************************************
 //                                      Course routes
@@ -70,7 +70,6 @@ router.post("/getCourseDetails", getCourseDetails)
 //                                      Category routes (Only by Admin)
 // ********************************************************************************************************
 // Category can Only be Created by Admin
-// TODO: Put IsAdmin Middleware here
 router.post("/createCategory", auth, isAdmin, createCategory)
 router.get("/showAllCategories", showAllCategories)
 router.post("/getCategoryPageDetails", categoryPageDetails)
@@ -80,6 +79,6 @@ router.post("/getCategoryPageDetails", categoryPageDetails)
 // ********************************************************************************************************
 router.post("/createRating", auth, isStudent, createRating)
 router.get("/getAverageRating", getAverageRating)
-router.get("/getReviews", getAllRatingReview)
+router.get("/getReviews", getAllRating)
 
 module.exports = router

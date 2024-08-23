@@ -56,7 +56,7 @@ exports.sendOtp=async(req,res)=>{
 
 
 // signup
-exports.singup=async (req,result) => {
+exports.signup=async (req,result) => {
         try {
             const {firstName,lastName,email,password,confirmPassword,accountType,contactNumber,otp}=req.body;
         if(!firstName||!email||!password||!confirmPassword||!accountType||!contactNumber||!otp){
@@ -100,7 +100,7 @@ exports.singup=async (req,result) => {
         // entry in db
         const profileDetails=await Profile.create({gender:null,dateOfBirth:null,about:null,contactNumber:null})
         const user=await User.create({
-            firstName,lastName,email,contactNumber,password:hashedPassword,accountType,additionalDetails:profileDetails._id,image=`https://api.dicebear.com/5.x/initials/svg?seed=${firstname} ${lastName}`
+            firstName,lastName,email,contactNumber,password:hashedPassword,accountType,additionalDetails:profileDetails._id,image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName}${lastName}`
         })
         return res.status(200).json({
             success:true,
