@@ -21,7 +21,7 @@ const PORT=process.env.PORT||4000;
 
 database.connect()
 app.use(express.json())
-app.use(cookieParser)
+app.use(cookieParser())
 app.use(
     cors({
         origin:process.env.FRONTENT_URL, //MEANS MUJHE IS FRONTEND URL KO ENTERTAIN KRNA HAI
@@ -47,7 +47,7 @@ app.use("/api/v1/payment",paymentRoutes)
 // default route
 app.get("/",(req,res)=>{
     return res.status(200).json({
-        success:false,
+        success:true,
         message:"server is running .......... 🟢 🏃‍♀️‍➡️🏃‍➡️"
     })
 })

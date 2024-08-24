@@ -1,5 +1,5 @@
 const User=require('../models/Users')
-const OTP=require('../models/Otps')
+const OTP=require('../models/Otp')
 const otpGenerator=require('otp-generator')
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
@@ -7,7 +7,7 @@ require('dotenv').config();
 // send otp
 exports.sendOtp=async(req,res)=>{
     try {
-        const email=res.body;
+        const {email}=req.body;
         // check user is already exist or not
         const checkUserPresentOrNot=await User.findOne({email});
         if(checkUserPresentOrNot){
@@ -26,7 +26,7 @@ exports.sendOtp=async(req,res)=>{
         console.log("OTP generated successfully",otp);
 
         // check otp is unique or not
-        const result=await otp.findOne({otp:otp});
+        const result=await OTP.findOne({otp:otp});
         while(result){
             otp=otpGenerator(6,{
                 upperCaseAlphabets:false,
