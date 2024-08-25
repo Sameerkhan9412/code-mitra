@@ -38,6 +38,7 @@ exports.updateProfile = async (req, res) => {
 exports.deleteAccount=async(req,res)=>{
     try {
         // get id
+        console.log(req.users)
         const id=req.user.id;
         // validation
         const userDetails=await User.findById(id)
@@ -56,6 +57,7 @@ exports.deleteAccount=async(req,res)=>{
             message:"User deleted successfully",
         })
     } catch (error) {
+      console.log(error)
         return res.status(500).json({
             success:false,
             message:"something went wrong while deleting account",

@@ -10,6 +10,7 @@ exports.createSubSection=async(req,res)=>{
         // extract file
         const video=req.files.videoFile;
         // validation
+        console.log(req.body)
         if(!sectionId||!title||!timeDuration||!description){
             return res.status(400).json({
                 success:false,
@@ -18,24 +19,24 @@ exports.createSubSection=async(req,res)=>{
         }
         // upload vidoe to cloudinary
         const uploadDetails=await uploadImageToCloudinary(video,process.env.FOLDER_NAME);
-
         // create a subsection
         const subsectionDetails=await SubSection.create({
             title:title,timeDuration:timeDuration,description:description,videoUrl:uploadDetails.secure_url
         })
 
         // update section with this subsection
-        const updatedSection=await Section.findByIdAndUpdate({_id:sectionId},{
-            $push:{
-                subSeciton:subsectionDetails._id
-            }
-        },{new:true})
+        const updatedSection = await Section.findByIdAndUpdate(
+            { _id: sectionId },
+            { $push: { subSection: subsectionDetails._id } },
+            { new: true }
+          ).populate("subSection")
 
 
         // return res
         return res.status(200).json({
             success:true,
-            message:"subsection created successfully"
+            message:"subsection created successfully",
+            data:updatedSection
         })
     } catch (error) {
         return res.status(500).json({

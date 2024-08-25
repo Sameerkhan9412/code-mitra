@@ -4,7 +4,7 @@ const app=express()
 /************************************************ 
                  IMPORT  ROUTES
 *************************************************/
-const userRoutes=require('./routes/User')
+const userRoutes=require('./routes/User.js')
 const profileRoutes=require('./routes/Profile')
 const courseRoutes=require('./routes/course')
 const paymentRoutes=require('./routes/Payment')

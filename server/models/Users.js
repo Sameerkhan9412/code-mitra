@@ -14,6 +14,11 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    email: {
+        type: String,
+        required: true,
+        trim: true,
+    },
     accountType:{
         type:String,
         enum:["Admin","Student","Instructor"],
@@ -48,4 +53,4 @@ const userSchema=new mongoose.Schema({
     ]
 });
 
-module.exports=mongoose.model("user",userSchema);
+module.exports=mongoose.model("User",userSchema);

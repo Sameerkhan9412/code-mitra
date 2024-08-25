@@ -6,7 +6,7 @@ const bcrypt = require ('bcrypt');
 exports.resetPasswordToken = async (req, res) => {
   try {
     // get email
-    const email = req.body;
+    const {email} = req.body;
     // check user for this email
     const user = await User.findOne ({email: email});
     if (!user) {
@@ -34,7 +34,7 @@ exports.resetPasswordToken = async (req, res) => {
     // send mail containing the url
     await mailSender (
       email,
-      `Password reset link","Password Reset Link:${url}`
+    "Password reset link",`Password Reset Link:${url}`
     );
     return res.status (200).json ({
       success: true,
@@ -54,7 +54,7 @@ exports.resetPassword = async (req, res) => {
   try {
     // data fetch
     //frontend ne token body me daal diya
-    const {password, confirmPassword, body} = req.body;
+    const {password, confirmPassword, token} = req.body;
     // validation
     if (!password || !confirmPassword) {
       return res.status (400).json ({
@@ -70,6 +70,8 @@ exports.resetPassword = async (req, res) => {
     }
     // get userdetails from db using token
     const userDetails = await User.findOne ({token: token});
+    console.log(userDetails)
+    console.log(token)
     // if no entry->invalid token
     if (!userDetails) {
       return res.status (400).json ({
@@ -85,9 +87,11 @@ exports.resetPassword = async (req, res) => {
       });
     }
     // hash password
-    const hashedPassword = bcrypt.hash (password, 10);
+    const hashedPassword = await bcrypt.hash (password, 10);
+    console.log(hashedPassword)
     // update password
-    await User.findByIdAndUpdate (
+    console.log(token)
+    const result=await User.findOneAndUpdate (
       {
         token: token,
       },
@@ -96,6 +100,7 @@ exports.resetPassword = async (req, res) => {
       },
       {new: true}
     );
+    console.log(result);
     // return resp
     return res.status (200).json ({
       success: true,
