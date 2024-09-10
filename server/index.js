@@ -17,14 +17,14 @@ const fileUpload=require('express-fileupload')
 const dotenv=require('dotenv')
 
 dotenv.config()
-const PORT=process.env.PORT||4000;
+const PORT=process.env.PORT;
 
 database.connect()
 app.use(express.json())
 app.use(cookieParser())
 app.use(
     cors({
-        origin:process.env.FRONTENT_URL, //MEANS MUJHE IS FRONTEND URL KO ENTERTAIN KRNA HAI
+        origin:"http://localhost:3000", //MEANS MUJHE IS FRONTEND URL KO ENTERTAIN KRNA HAI
         credentials:true        // or bhi flags hai
     })
 )
