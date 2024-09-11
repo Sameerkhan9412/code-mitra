@@ -1,18 +1,32 @@
 export const NavbarLinks=[
     {
         title:"Home",
-        path:"/"
+        path:"/",
+        icon:"House"
     },
     {
-        title:"Category",
-        path:"/category"
+        title:"Courses",
+        path:"/category",
+        icon:"<Shapes />"
     },
     {
-        title:"About Us",
-        path:"/about"
+        title:"Compiler",
+        path:"/compiler",
+        icon:"Code"
+    },
+    {
+        title:"Practice",
+        path:"/practice",
+        icon:"Shapes"
+    },
+    {
+        title:"About us",
+        path:"/about",
+        icon:"VenetianMask"
     },
     {
         title:"Contact us",
-        path:"/contact"
+        path:"/contact",
+        icon:"TabletSmartphone"
     }
 ];

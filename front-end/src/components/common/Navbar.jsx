@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux'
 import ProfileDropdown from './Auth/ProfileDropdown';
 import { apiConnector } from '../../services/apiConnectors';
 import { categories } from '../../services/apis';
+import { BicepsFlexed, ChevronDown, Code, House, LogIn, LogOut, Shapes, TabletSmartphone, VenetianMask } from 'lucide-react';
 const Navbar = () => {
     const {token}=useSelector((state)=>state.auth);
     const {user}=useSelector((state)=>state.profile)
@@ -30,42 +31,28 @@ const Navbar = () => {
         return matchPath({path:route},location.pathname)
     }
   return (
-    <div className='flex h-14  items-center  justify-center border-b-[1px] border-b-black'>
-        <div className='flex w-11/12 max-w-screen-lg items-center justify-between'>
+    <div className='flex h-14  items-center  border-b-yellow font-bold w-full border-b-2' >
+        <div className='flex  w-full justify-between items-center mx-4'>
         {/* image */}
-            <Link path="/">
-                <img src={logo} alt="logo" height={30} width={80} />
+            <Link path="/" className="">
+                <img src={logo} alt="logo" width={120} />
             </Link>
             {/* nav links */}
             <nav>
-                <ul className='flex flex-row'>
-                    {
-                        NavbarLinks.map((link,index)=>(
-                            <li key={index}>
-                                {
-                                    link.path==="/category"?(<div>
-                                        <p className=''>{link.title}</p>
-                                        <div className="">
-                                            {
-                                                subLinks?.length>0?subLinks.map((link,index)=>(
-                                                    <li><Link to={link._id}>{link.name}</Link></li>
-                                                )):<p>cateogy not found</p>
-                                            }
-                                        </div>
-                                    </div>):(
-                                        <Link to={link?.path}><p className={`${matchRoute(link?.path)?"bg-red-600":"text-yellow-500"}`}>{link.title}</p></Link>
-                                    )
-                                }
-                            </li>
-                        ))
-                    }
+                <ul className='flex flex-row gap-6'>
+                    <li><Link to={"/"}><p className={`${matchRoute("/")?"text-yellow":""} flex gap-1 items-center`}><House size={20}/>Home</p></Link></li>
+                    <li><Link to={"/categories"}><p className={`${matchRoute("/categories")?"text-yellow":""} flex gap-1 items-center`}>Courses <ChevronDown strokeWidth={1} size={20} className='font-bold'/></p></Link></li>
+                    <li><Link to={"/compiler"}><p className={`${matchRoute("/compiler")?"text-yellow":""} flex gap-1 items-center`}><Code size={20}/>Compiler</p></Link></li>
+                    <li><Link to={"/practice"}><p className={`${matchRoute("/practice")?"text-yellow":""} flex gap-1 items-center`}><BicepsFlexed size={20}/>Practice</p></Link></li>
+                    <li><Link to={"/about"}><p className={`${matchRoute("/about")?"text-yellow":""} flex gap-1 items-center`}><VenetianMask size={20}/>About us</p></Link></li>
+                    <li><Link to={"/contact"}><p className={`${matchRoute("/contact")?"text-yellow":""} flex gap-1 items-center`}><TabletSmartphone size={20}/>Contact us</p></Link></li>
                 </ul>
             </nav>
 
             {/* login/signup */}
             <div className=" flex gap-4 ">
                 {
-                   user&&user?.accountType !="Instructor" && (
+                   user&&user?.accountType !=="Instructor" && (
                     <Link to="/dashboard/cart" className='relative '>
                         cart {
                             totalItems>0 && (
@@ -78,14 +65,14 @@ const Navbar = () => {
                 {
                     token===null && (
                         <Link to={'/login'}>
-                            <button>Log In</button>
+                            <button className={`border-yellow border-2 p-1 rounded-md ${matchRoute("login")?"bg-yellow text-black":""} flex gap-1`}>Log In</button>
                         </Link>
                     )
                 }
                 {
                     token===null && (
                         <Link to={'/signup'}>
-                            <button>Sign up</button>
+                            <button className={`border-yellow border-2 p-1 rounded-md ${matchRoute("signup")?"bg-yellow text-black":""} flex gap-1`}>Sign up</button>
                         </Link>
                     )
                 }

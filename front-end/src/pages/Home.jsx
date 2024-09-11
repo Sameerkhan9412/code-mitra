@@ -9,8 +9,6 @@ const Home = () => {
       {/* section 3 */}
       {/* section 4 */}
       {/* section 5 */}
-
-
     </div>
   )
 }
