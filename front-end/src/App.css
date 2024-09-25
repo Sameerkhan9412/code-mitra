@@ -1,4 +1,16 @@
-/* HTML: <div class="loader"></div> */
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #202022;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #4886EE;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+}
+
 .loader {
   width: 50px;
   aspect-ratio: 1;
@@ -8,7 +20,7 @@
 .loader::after {    
   content:"";
   grid-area: 1/1;
-  --c:no-repeat radial-gradient(farthest-side,#25b09b 92%,#0000);
+  --c:no-repeat radial-gradient(farthest-side,#4886EE 92%,#0000);
   background: 
     var(--c) 50%  0, 
     var(--c) 50%  100%, 

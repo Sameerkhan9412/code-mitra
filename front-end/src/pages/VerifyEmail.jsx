@@ -57,7 +57,7 @@ const VerifyEmail = () => {
             numInputs={6}
             renderSeparator={<span>-</span>}
             renderInput={(props) =>
-               <input {...props} className="w-[48px] lg:w-[60px] border-0 bg-richblack-800 rounded-[0.5rem] text-white aspect-square text-center focus:border-0 focus:outline-blue text-3xl" placeholder="-" style={{
+               <input {...props} className="w-[48px] lg:w-[60px] bg-black rounded-[0.5rem] text-white aspect-square text-center  focus:border-0  focus:outline-blue text-2xl border-2 border-blue" placeholder="-" style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                }}
                containerStyle={{

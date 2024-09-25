@@ -8,7 +8,6 @@ function Signup() {
       description="– Join Today to Start Building, Learning, and Growing Your Developer Skills! "
       image={signupImg}
       formType="signup"
-      // Unlock Your Development Potential – Join Today to Start Building, Learning, and Growing Your Developer Skills!
     />
   )
 }

@@ -90,12 +90,6 @@ function LoginForm() {
       >
         Sign In
       </button>
-      <button
-        type=""
-        className="mt-6 rounded-[8px] bg-blue-50 py-[8px] px-[12px] font-medium text-black bg-blue"
-      >
-        Sign 
-      </button>
     </form>
   )
 }

@@ -15,10 +15,11 @@ import Spinner from "./components/common/Spinner";
 import './App.css'
 import { Toaster } from "react-hot-toast";
 import ForgetPassword from "./pages/ForgetPassword";
+import UpdatePassword from "./pages/UpdatePassword";
 
 export default function App() {
   return (
-    <div className="App bg-black text-white min-h-screen">
+    <div className="App bg-black text-white min-h-screen relative">
       <Toaster/>
         <Navbar/>
       <Routes>
@@ -31,7 +32,8 @@ export default function App() {
         <Route path="/login"  element={<Login/>}/>
         <Route path="/signup"  element={<Signup/>}/>
         <Route path="/verify-email"  element={<VerifyEmail/>}/>
-        <Route path="/forget-password"  element={<ForgetPassword/>}/>
+        <Route path="/forgot-password"  element={<ForgetPassword/>}/>
+        <Route path="/update-password/:id"  element={<UpdatePassword/>}/>
         <Route path="/dashboard/my-profile"  element={<MyProfile/>}/>
         
         <Route path="/contact"  element={<Contact/>}/>

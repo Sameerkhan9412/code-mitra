@@ -34,7 +34,28 @@ exports.resetPasswordToken = async (req, res) => {
     // send mail containing the url
     await mailSender (
       email,
-    "Password reset link",`Password Reset Link:${url}`
+    "Password reset link",`Dear ${user.firstName},<br>
+I hope this email finds you well. We have received a request to reset the password for your account associated with the email address ${email} . If you did not initiate this request, please disregard this email.
+<br>If you did request a password reset, please follow the instructions below to reset your password:<br>
+<ol>
+<li>Click on the following link to navigate to the password reset page: ${url}</li>
+<li>On the password reset page, you will be prompted to enter a new password for your account.</li>
+<li>Enter your new password and confirm it by typing it again.</li>
+<li>Once you have entered and confirmed your new password, click the "Reset Password" button.</li>
+</ol>
+
+<p>Please note the following security tips:</p>
+<ul>
+<li>Choose a strong password that includes a combination of uppercase and lowercase letters, numbers, and symbols.</li>
+<li>Do not share your password with anyone.</li>
+<li>Regularly update your password for added security.</li>
+</ul>
+<span>If you encounter any issues during the password reset process or if you did not initiate this request, please contact our support team immediately. We are here to assist you.</span><br><br><br>
+<span>Thank you for using our services. We appreciate your trust in us.</span> <br><br>
+<span classname="font-bold">
+Best regards, <br>Sameer khan <br>Code Mitra
+</span>
+`
     );
     return res.status (200).json ({
       success: true,
