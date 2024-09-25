@@ -1,4 +1,5 @@
 import loginImg from "../assets/images/login.gif"
+import Spinner from "../components/common/Spinner"
 import Template from "../components/Core/Auth/Template"
 
 function Login() {

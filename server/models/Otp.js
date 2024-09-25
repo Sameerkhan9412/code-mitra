@@ -1,5 +1,6 @@
 const mongoose=require('mongoose')
-const mailSender=require('../utils/mailSender')
+const mailSender=require('../utils/mailSender');
+const otpTemplate = require('../mail/templates/emailVerificationMail');
 const OTPSchema=new mongoose.Schema({
     email:{
         type:String,
@@ -12,7 +13,7 @@ const OTPSchema=new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now(),
-        expires:5*60*1000,
+        expires:10*60*1000,
     }
 })
 
@@ -20,7 +21,7 @@ const OTPSchema=new mongoose.Schema({
 // to send verfication email
 const sendVerficationEmail=async(email,otp)=>{
     try {
-        const mailResponse=await mailSender(email,"Verification Email From Code Mitra",otp);
+        const mailResponse=await mailSender(email,"Verification Email",otpTemplate(otp));
         console.log("Email sent successfully:",mailResponse);
 
     } catch (error) {

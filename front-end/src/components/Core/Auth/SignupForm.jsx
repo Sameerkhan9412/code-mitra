@@ -90,7 +90,7 @@ function SignupForm() {
         <div className="flex gap-x-4">
           <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
-              First Name <sup className=" text-yellow">*</sup>
+              First Name <sup className=" text-blue">*</sup>
             </p>
             <input
               required
@@ -198,7 +198,7 @@ function SignupForm() {
         </div>
         <button
           type="submit"
-          className="mt-6 rounded-[8px] bg-yellow py-[8px] px-[12px] font-medium text-black"
+          className="mt-6 rounded-[8px] bg-blue py-[8px] px-[12px] font-medium text-black"
         >
           Create Account
         </button>

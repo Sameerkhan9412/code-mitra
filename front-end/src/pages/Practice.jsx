@@ -2,7 +2,7 @@ import React from 'react'
 
 const Practice = () => {
   return (
-    <div>Comming Soon</div>
+    <div className='text-4xl text-center'>Comming Soon</div>
   )
 }
 
