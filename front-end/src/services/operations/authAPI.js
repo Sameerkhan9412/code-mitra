@@ -133,7 +133,7 @@ const {
           throw new Error(response.data.message);
         }
   
-        toast.success("Reset Email Sent");
+        toast.success("Reset Password Email Sent");
         setEmailSent(true);
       }
       catch(error) {

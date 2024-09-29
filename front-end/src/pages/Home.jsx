@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 
 const Home = () => {
   return (
-    <div className='w-screen text-4xl text-center'>
+    <div className='w-screen text-6xl font-bold text-center min-h-[calc(100vh-3.5rem)] flex items-center justify-center'>
       Welcome  to Code Mitra Home  Page
       
       

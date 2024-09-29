@@ -2,7 +2,7 @@ import React from 'react'
 
 const Notes = () => {
   return (
-    <div className='text-center text-4xl '>Notes Will Be Coming Soon</div>
+    <div className='w-screen text-6xl font-bold text-center min-h-[calc(100vh-3.5rem)] flex items-center justify-center '>Notes Will Be Coming Soon</div>
   )
 }
 
