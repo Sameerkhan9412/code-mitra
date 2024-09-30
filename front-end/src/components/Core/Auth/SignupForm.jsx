@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import { sendOtp } from "../../../services/operations/authAPI"
-import { setSignupData } from "../../../slice/AuthSlice"
+import { setSignupData } from "../../../slices/AuthSlice"
 import { ACCOUNT_TYPE } from "../../../utils/constants"
 import Tab from "../../common/Tab"
 import { Eye, EyeOff } from "lucide-react"

@@ -16,6 +16,12 @@ import './App.css'
 import { Toaster } from "react-hot-toast";
 import ForgetPassword from "./pages/ForgetPassword";
 import UpdatePassword from "./pages/UpdatePassword";
+import Settings from "./components/Core/Dashboard/Settings";
+import PrivateRoute from "./components/Core/Auth/PrivateRoute";
+import Error from "./pages/Error";
+import OpenRoute from "./components/Core/Auth/OpenRoute";
+import Dashboard from "./pages/Dashboard";
+import EnrolledCourses from "./components/Core/Dashboard/EnrolledCourses";
 
 export default function App() {
   return (
@@ -29,13 +35,20 @@ export default function App() {
         <Route path="/practice" element={<Practice/>}/>
         <Route path="/notes"  element={<Notes/>}/>
         <Route path="/jobs"  element={<Job/>}/>
-        <Route path="/login"  element={<Login/>}/>
-        <Route path="/signup"  element={<Signup/>}/>
-        <Route path="/verify-email"  element={<VerifyEmail/>}/>
-        <Route path="/forgot-password"  element={<ForgetPassword/>}/>
+        <Route path="/signup"  element={<OpenRoute><Signup/></OpenRoute>}/>
+        <Route path="/login"  element={<OpenRoute><Login/></OpenRoute>}/>
+        <Route path="/verify-email"  element={<OpenRoute><VerifyEmail/></OpenRoute>}/>
+        <Route path="/forgot-password"  element={<OpenRoute><ForgetPassword/></OpenRoute>}/>
         <Route path="/update-password/:id"  element={<UpdatePassword/>}/>
-        <Route path="/dashboard/my-profile"  element={<MyProfile/>}/>
-        
+        <Route element={<PrivateRoute>
+          <Dashboard/>
+        </PrivateRoute>}>
+        <Route path="dashboard/my-profile" element={<MyProfile/>}/>
+        <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
+        <Route path="dashboard/settings" element={<Settings/>}/>
+        </Route>
+
+        <Route path="*" element={<Error/>}/>
         <Route path="/contact"  element={<Contact/>}/>
         <Route path="/about"  element={<About/>}/>
 

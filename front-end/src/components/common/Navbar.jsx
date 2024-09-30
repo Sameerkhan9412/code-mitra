@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {Link, matchPath, useLocation} from 'react-router-dom'
-// import logo from '../../assets/logo/dark logo.gif';
-// import logo from 'https://res.cloudinary.com/ddsumlfnv/image/upload/v1727219518/light-logo_iikf2z.gif';
 import {useSelector} from 'react-redux'
 import ProfileDropdown from '../Core/Auth/ProfileDropdown';
-import { apiConnector } from '../../services/apiConnectors';
+import { apiConnector } from '../../services/apiConnector';
 import { categories } from '../../services/apis';
 import { BicepsFlexed, ChartNoAxesCombined, ChevronDown, Code, House, LogIn, LogOut, NotebookPen, Shapes, ShoppingCart, TabletSmartphone, Trophy, VenetianMask } from 'lucide-react';
-import { setLoading } from '../../slice/AuthSlice';
+import { setLoading } from '../../slices/AuthSlice';
 import Spinner from './Spinner';
 const Navbar = () => {
     const [loading, setLoading] = useState(false)
