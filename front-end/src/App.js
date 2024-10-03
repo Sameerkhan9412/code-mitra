@@ -20,6 +20,7 @@ import OpenRoute from "./components/Core/Auth/OpenRoute";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/Core/Auth/PrivateRoute";
 import Settings from "./components/Core/Dashboard/Settings";
+import EnrolledCourses from "./components/Core/Dashboard/EnrolledCourses";
 
 export default function App() {
   return (
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/update-password/:id"  element={<OpenRoute><UpdatePassword/></OpenRoute>}/>
         <Route path="/dashboard"  element={<PrivateRoute><Dashboard/></PrivateRoute>}>
         <Route path="my-profile" element={<MyProfile/>}/>
+        <Route path="enrolled-courses" element={<PrivateRoute><EnrolledCourses/></PrivateRoute>}/>
         <Route path="settings" element={<Settings/>}/>
         </Route>
         
