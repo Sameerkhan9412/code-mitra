@@ -19,7 +19,7 @@ const Sidebar = () => {
     }
   return (
     <>
-    <div>
+    <div className='flex  flex-col justify-between'>
         <div className="flex flex-col">
           {sidebarLinks.map((link) => {
             if (link.type && user?.accountType !== link.type) return null
