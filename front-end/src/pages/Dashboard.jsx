@@ -13,8 +13,8 @@ const Dashboard = () => {
   return (
     <div className='flex overflow-y-hidden h-[calc(100vh-3.5rem)] p-4'>
             <Sidebar/>
-        <div className='h-[100vh] flex-1 overflow-auto'>
-            <div className=' mx-auto w-11/12 max-w-[1000px] py-10'>
+        <div className='flex-1 overflow-auto'>
+            <div className=' mx-auto w-11/12 max-w-[1000px]'>
             <Outlet/>
             </div>
 

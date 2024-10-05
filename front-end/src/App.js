@@ -19,8 +19,8 @@ import UpdatePassword from "./pages/UpdatePassword";
 import OpenRoute from "./components/Core/Auth/OpenRoute";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/Core/Auth/PrivateRoute";
-import Settings from "./components/Core/Dashboard/Settings";
 import EnrolledCourses from "./components/Core/Dashboard/EnrolledCourses";
+import Settings from "./components/Core/Dashboard/Settings";
 
 export default function App() {
   return (

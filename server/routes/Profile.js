@@ -7,9 +7,8 @@ const {
   getAllUserDetails,
   getEnrolledCourses,
   updateDisplayPicture,
-  // updateDisplayPicture,
-  // getEnrolledCourses,
 } = require("../controllers/Profile")
+const { changePassword } = require("../controllers/Auth")
 
 // ********************************************************************************************************
 //                                      Profile routes
@@ -21,5 +20,6 @@ router.get("/getUserDetails", auth, getAllUserDetails)
 // Get Enrolled Courses
 router.get("/getEnrolledCourses", auth, getEnrolledCourses)
 router.put("/updateDisplayPicture", auth, updateDisplayPicture)
+router.put("/updatePassword", auth, changePassword);
 
 module.exports = router

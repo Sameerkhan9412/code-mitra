@@ -4,35 +4,54 @@ const { uploadImageToCloudinary } = require('../utils/imageUploader');
 
 // update profile
 exports.updateProfile = async (req, res) => {
-	try {
-		const { dateOfBirth = "", about = "", contactNumber } = req.body;
-		const id = req.user.id;
+  try {
+    const {
+      firstName = "",
+      lastName = "",
+      dateOfBirth = "",
+      about = "",
+      contactNumber = "",
+      gender = "",
+    } = req.body
+    const id = req.user.id
 
-		// Find the profile by id
-		const userDetails = await User.findById(id);
-		const profile = await Profile.findById(userDetails.additionalDetails);
+    // Find the profile by id
+    const userDetails = await User.findById(id)
+    const profile = await Profile.findById(userDetails.additionalDetails)
 
-		// Update the profile fields
-		profile.dateOfBirth = dateOfBirth;
-		profile.about = about;
-		profile.contactNumber = contactNumber;
+    const user = await User.findByIdAndUpdate(id, {
+      firstName,
+      lastName,
+    })
+    await user.save()
 
-		// Save the updated profile
-		await profile.save();
+    // Update the profile fields
+    profile.dateOfBirth = dateOfBirth
+    profile.about = about
+    profile.contactNumber = contactNumber
+    profile.gender = gender
 
-		return res.json({
-			success: true,
-			message: "Profile updated successfully",
-			profile,
-		});
-	} catch (error) {
-		console.log(error);
-		return res.status(500).json({
-			success: false,
-			error: error.message,
-		});
-	}
-};
+    // Save the updated profile
+    await profile.save()
+
+    // Find the updated user details
+    const updatedUserDetails = await User.findById(id)
+      .populate("additionalDetails")
+      .exec()
+
+    return res.json({
+      success: true,
+      message: "Profile updated successfully",
+      updatedUserDetails,
+    })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+    })
+  }
+}
 
 // delete account
 exports.deleteAccount=async(req,res)=>{
@@ -74,6 +93,7 @@ exports.getAllUserDetails=async(req,res)=>{
         return res.status(200).json({
             success:true,
             message:"User data fetched successfully",
+            userDetails
         })  
     } catch (error) {
         return res.status(500).json({
