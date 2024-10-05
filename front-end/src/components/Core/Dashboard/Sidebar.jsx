@@ -28,7 +28,7 @@ const Sidebar = () => {
             )
           })}
         </div>
-        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-700" id="SideBar"/>
+        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-gray-700" id="SideBar"/>
         <div className="flex flex-col">
           <SidebarLinks
             link={{ name: "Settings", path: "/dashboard/settings" }}
@@ -45,7 +45,7 @@ const Sidebar = () => {
                 btn2Handler: () => setConfirmationModal(null),
               })
             }
-            className="px-8 py-2 text-sm font-medium text-richblack-300"
+            className="px-8 py-2 text-sm  text-white font-bold"
           >
             <div className="flex items-center gap-x-2">
               <VscSignOut className="text-lg" />

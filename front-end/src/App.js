@@ -21,6 +21,7 @@ import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/Core/Auth/PrivateRoute";
 import EnrolledCourses from "./components/Core/Dashboard/EnrolledCourses";
 import Settings from "./components/Core/Dashboard/Settings";
+import PurchaseHistory from "./components/Core/Dashboard/PurchaseHistory";
 
 export default function App() {
   return (
@@ -39,9 +40,10 @@ export default function App() {
         <Route path="/forgot-password"  element={<OpenRoute><ForgetPassword/></OpenRoute>}/>
         <Route path="/update-password/:id"  element={<OpenRoute><UpdatePassword/></OpenRoute>}/>
         <Route path="/dashboard"  element={<PrivateRoute><Dashboard/></PrivateRoute>}>
-        <Route path="my-profile" element={<MyProfile/>}/>
-        <Route path="enrolled-courses" element={<PrivateRoute><EnrolledCourses/></PrivateRoute>}/>
-        <Route path="settings" element={<Settings/>}/>
+          <Route path="my-profile" element={<MyProfile/>}/>
+          <Route path="enrolled-courses" element={<PrivateRoute><EnrolledCourses/></PrivateRoute>}/>
+          <Route path="purchase-history" element={<PrivateRoute><PurchaseHistory/></PrivateRoute>}/>
+          <Route path="settings" element={<PrivateRoute><Settings/></PrivateRoute>}/>
         </Route>
         
         <Route path="/contact"  element={<Contact/>}/>

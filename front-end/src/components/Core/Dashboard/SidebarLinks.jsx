@@ -15,10 +15,10 @@ export default function SidebarLinks({ link, iconName }) {
     <NavLink
       to={link.path}
     //   onClick={() => dispatch(())}
-      className={`relative px-8 py-2 text-sm font-medium ${
+      className={`relative px-8 py-2 text-sm font-bold ${
         matchRoute(link.path)
           ? "bg-blue "
-          : "bg-opacity-0 text-richblack-300"
+          : "bg-opacity-0 text-white"
       } transition-all duration-200`}
     >
       <span

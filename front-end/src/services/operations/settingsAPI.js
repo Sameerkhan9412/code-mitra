@@ -90,7 +90,7 @@ export function deleteProfile(token, navigate) {
     const toastId = toast.loading("Loading...")
     try {
       const response = await apiConnector("DELETE", DELETE_PROFILE_API, null, {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer${token}`,
       })
       console.log("DELETE_PROFILE_API API RESPONSE............", response)
 

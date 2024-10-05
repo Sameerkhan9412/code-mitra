@@ -26,13 +26,13 @@ const EnrolledCourses = () => {
     }, [])
   return (
     <>
-      <div className="text-3xl text-richblack-50">Enrolled Courses</div>
+      <div className="text-3xl text-white font-bold">Enrolled Courses</div>
       {!enrolledCourses ? (
         <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
           <Spinner/>
         </div>
       ) : !enrolledCourses.length ? (
-        <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
+        <p className="grid h-[10vh] w-full place-content-center text-blue text-3xl">
           You have not enrolled in any course yet
         </p>
       ) : (
