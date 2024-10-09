@@ -1,65 +1,36 @@
-import { useState } from "react"
-import { VscSignOut } from "react-icons/vsc"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
-
-import { sidebarLinks } from "../../../data/dashboard-links"
-import { logout } from "../../../services/operations/authAPI"
-import ConfirmationModal from "../../common/ConfirmationModal"
-import SidebarLink from "./SidebarLink"
-import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Spinner from '../../common/Spinner'
+import SidebarLinks from './SidebarLinks'
+import { sidebarLinks } from '../../../utils/dashboard-links'
+import { logout } from '../../../services/operations/authAPI'
+import { VscSignOut } from 'react-icons/vsc'
+import ConfirmationModal from '../../common/ConfirmationModal'
 
-
-export default function Sidebar() {
-  const { user, loading: profileLoading } = useSelector(
-    (state) => state.profile
-  )
-  const { loading: authLoading } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  // to keep track of confirmation modal
-  const [confirmationModal, setConfirmationModal] = useState(null)
-
-  if (profileLoading || authLoading) {
-    return (
-      <div className="grid h-[calc(100vh-3.5rem)] min-w-[220px] items-center border-r-[1px] border-r-blue bg-richblack-800">
-          <Spinner/>
-      </div>
-    )
-  }
-  const ShowOrHideSideBar=()=>{
-    let navigateIconLeft=document.getElementById("NavigateLeftBtn").classList;
-    let navigateIconRight=document.getElementById("NavigateRightBtn").classList;
-    let SideBar=document.getElementById("dashboardSidebar").style;
-    // navigateIconLeft.replace("visible","hidden")
-    if(navigateIconLeft=="visible"){
-      navigateIconLeft.replace("visible","hidden");
-      navigateIconRight.replace("hidden","visible");
-      SideBar.width="50px";
+const Sidebar = () => {
+    const {loading:authLoading}=useSelector((state)=>state.auth)
+    const {user,loading:profileLoading}=useSelector((state)=>state.profile)
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
+    const [confirmationModal,setConfirmationModal]=useState(null)
+    if(authLoading||profileLoading){
+        return <Spinner/>
     }
-    else{
-      navigateIconLeft.replace("hidden","visible");
-      navigateIconRight.replace("visible","hidden");
-      SideBar.width="220px";
-    }
-    
-  }
-
   return (
     <>
-      <div className="flex overflow-auto  flex-col border-r-[4px] border-r-blue bg-black py-10 relative overflow-x-hidden transition-all text-white" id="dashboardSidebar" >
+    <div className='flex  flex-col justify-between'>
         <div className="flex flex-col">
           {sidebarLinks.map((link) => {
             if (link.type && user?.accountType !== link.type) return null
             return (
-              <SidebarLink key={link.id} link={link} iconName={link.icon} />
+              <SidebarLinks key={link.id} link={link} iconName={link.icon} />
             )
           })}
         </div>
-        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-blue" id="SideBar"/>
+        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-gray-700" id="SideBar"/>
         <div className="flex flex-col">
-          <SidebarLink
+          <SidebarLinks
             link={{ name: "Settings", path: "/dashboard/settings" }}
             iconName="VscSettingsGear"
           />
@@ -74,7 +45,7 @@ export default function Sidebar() {
                 btn2Handler: () => setConfirmationModal(null),
               })
             }
-            className="px-8 py-2 text-sm font-medium text-white"
+            className="px-8 py-2 text-sm  text-white font-bold"
           >
             <div className="flex items-center gap-x-2">
               <VscSignOut className="text-lg" />
@@ -82,12 +53,10 @@ export default function Sidebar() {
             </div>
           </button>
         </div>
-        <button className="text-white text-4xl absolute bottom-2 right-2"  onClick={ShowOrHideSideBar}>
-            <FaAngleDoubleLeft id="NavigateLeftBtn" className="visible" />
-            <FaAngleDoubleRight id="NavigateRightBtn" className="hidden" />
-          </button>
-      </div>
+        </div>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
-    </>
+      </>
   )
 }
+
+export default Sidebar

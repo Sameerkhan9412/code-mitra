@@ -1,9 +1,9 @@
 import { toast } from "react-hot-toast"
-
-import { setLoading, setUser } from "../../slices/profileSlice"
-import { apiConnector } from "../apiConnector"
+// import { apiConnector } from "../apiConnectors";
+import {apiConnector} from "../apiConnector"
 import { profileEndpoints } from "../apis"
 import { logout } from "./authAPI"
+import { setLoading,setUser } from "../../slice/ProfileSlice";
 
 const { GET_USER_DETAILS_API, GET_USER_ENROLLED_COURSES_API,GET_INSTRUCTOR_DATA_API } = profileEndpoints
 
@@ -15,7 +15,6 @@ export function getUserDetails(token, navigate) {
         Authorization: `Bearer ${token}`,
       })
       console.log("GET_USER_DETAILS API RESPONSE............", response)
-
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
@@ -40,7 +39,7 @@ export async function getUserEnrolledCourses(token) {
       GET_USER_ENROLLED_COURSES_API,
       null,
       {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer${token}`,
       }
     )
     result = response.data.data

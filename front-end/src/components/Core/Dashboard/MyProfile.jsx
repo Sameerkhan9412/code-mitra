@@ -2,19 +2,18 @@ import { RiEditBoxLine } from "react-icons/ri"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { formattedDate } from "../../../utils/dateFormatter"
 import IconBtn from "../../common/IconBtn"
-
+import { formattedDate } from "../../../utils/data-formatter"
 export default function MyProfile() {
   const { user } = useSelector((state) => state.profile)
   const navigate = useNavigate()
 
   return (
     <>
-      <h1 className="mb-14 text-3xl font-medium text-white">
+      <h1 className="mb-4 text-3xl font-medium ">
         My Profile
       </h1>
-      <div className="flex items-center justify-between rounded-md border-[1px]  p-8 px-12">
+      <div className="flex items-center justify-between rounded-md border-2 border-gray-700 bg-gray-800 p-4 px-8  ">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -25,7 +24,7 @@ export default function MyProfile() {
             <p className="text-lg font-semibold">
               {user?.firstName + " " + user?.lastName}
             </p>
-            <p className="text-sm text-white">{user?.email}</p>
+            <p className="text-sm text-gray-400">{user?.email}</p>
           </div>
         </div>
         <IconBtn
@@ -37,9 +36,9 @@ export default function MyProfile() {
           <RiEditBoxLine />
         </IconBtn>
       </div>
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px]  p-8 px-12">
+      <div className="my-4 flex flex-col gap-y-2 rounded-md border-2 border-gray-700 bg-gray-800  p-4 px-8">
         <div className="flex w-full items-center justify-between">
-          <p className="text-lg font-semibold text-white">About</p>
+          <p className="text-lg font-semibold">About</p>
           <IconBtn
             text="Edit"
             onclick={() => {
@@ -53,15 +52,15 @@ export default function MyProfile() {
           className={`${
             user?.additionalDetails?.about
               ? "text-white"
-              : "text-white"
+              : "text-gray-400"
           } text-sm font-medium`}
         >
           {user?.additionalDetails?.about ?? "Write Something About Yourself"}
         </p>
       </div>
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px]   p-8 px-12">
+      <div className="my-4  flex flex-col gap-y-2 rounded-md border-2 border-gray-700 bg-gray-800 p-8 px-8">
         <div className="flex w-full items-center justify-between">
-          <p className="text-lg font-semibold ">
+          <p className="text-lg font-semibold text-white">
             Personal Details
           </p>
           <IconBtn
@@ -76,19 +75,19 @@ export default function MyProfile() {
         <div className="flex max-w-[500px] justify-between">
           <div className="flex flex-col gap-y-5">
             <div>
-              <p className="mb-2 text-sm ">First Name</p>
-              <p className="text-sm font-medium ">
+              <p className="mb-2 text-sm text-gray-400">First Name</p>
+              <p className="text-sm font-medium">
                 {user?.firstName}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm">Email</p>
+              <p className="mb-2 text-sm text-gray-400">Email</p>
               <p className="text-sm font-medium ">
                 {user?.email}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm ">Gender</p>
+              <p className="mb-2 text-sm text-gray-400">Gender</p>
               <p className="text-sm font-medium ">
                 {user?.additionalDetails?.gender ?? "Add Gender"}
               </p>
@@ -96,19 +95,19 @@ export default function MyProfile() {
           </div>
           <div className="flex flex-col gap-y-5">
             <div>
-              <p className="mb-2 text-sm ">Last Name</p>
+              <p className="mb-2 text-sm text-gray-400">Last Name</p>
               <p className="text-sm font-medium ">
                 {user?.lastName}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm ">Phone Number</p>
-              <p className="text-sm font-medium ">
+              <p className="mb-2 text-sm text-gray-400">Phone Number</p>
+              <p className="text-sm font-medium">
                 {user?.additionalDetails?.contactNumber ?? "Add Contact Number"}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm">Date Of Birth</p>
+              <p className="mb-2 text-sm text-gray-400">Date Of Birth</p>
               <p className="text-sm font-medium ">
                 {formattedDate(user?.additionalDetails?.dateOfBirth) ??
                   "Add Date Of Birth"}

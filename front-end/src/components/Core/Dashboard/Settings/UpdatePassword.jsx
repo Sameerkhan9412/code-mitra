@@ -4,7 +4,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-import { changePassword } from "../../../../services/operations/SettingsAPI"
+import { changePassword } from "../../../../services/operations/settingsAPI"
 import IconBtn from "../../../common/IconBtn"
 import { logout } from "../../../../services/operations/authAPI"
 // import { logout } from "../../../services/operations/authAPI"
@@ -25,11 +25,9 @@ export default function UpdatePassword() {
   } = useForm()
 
   const submitPasswordForm = async (data) => {
-    // console.log("password Data - ", data)
-    // console.log("password Data - ", token)
     try {
       await changePassword(token, data)
-      dispatch(logout(navigate));
+      // dispatch(logout(navigate));
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }
@@ -38,11 +36,11 @@ export default function UpdatePassword() {
   return (
     <>
       <form onSubmit={handleSubmit(submitPasswordForm)}>
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
-          <h2 className="text-lg font-semibold text-richblack-5">Password</h2>
+        <div className="my-8 flex flex-col gap-y-6 rounded-md border-[1px] border-gray-700 bg-gray-800 p-8 px-12">
+          <h2 className="text-lg font-semibold">Password</h2>
           <div className="flex flex-col gap-5 lg:flex-row">
             <div className="relative flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="oldPassword" className="lable-style">
+              <label htmlFor="oldPassword" className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
                 Current Password
               </label>
               <input
@@ -50,7 +48,7 @@ export default function UpdatePassword() {
                 name="oldPassword"
                 id="oldPassword"
                 placeholder="Enter Current Password"
-                className="form-style"
+                className="w-full rounded-[0.5rem] bg-gray-700 p-[12px] text-white outline-none"
                 {...register("oldPassword", { required: true })}
               />
               <span
@@ -70,7 +68,7 @@ export default function UpdatePassword() {
               )}
             </div>
             <div className="relative flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="newPassword" className="lable-style">
+              <label htmlFor="newPassword" className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
                 New Password
               </label>
               <input
@@ -78,7 +76,7 @@ export default function UpdatePassword() {
                 name="newPassword"
                 id="newPassword"
                 placeholder="Enter New Password"
-                className="form-style"
+                className="w-full rounded-[0.5rem] bg-gray-700 p-[12px] text-white outline-none"
                 {...register("newPassword", { required: true })}
               />
               <span
@@ -98,7 +96,7 @@ export default function UpdatePassword() {
               )}
             </div>
             <div className="relative flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="confirmPassword" className="lable-style">
+              <label htmlFor="confirmPassword" className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
                 Confirm Password
               </label>
               <input
@@ -106,7 +104,7 @@ export default function UpdatePassword() {
                 name="confirmPassword"
                 id="confirmPassword"
                 placeholder="Enter confirm Password"
-                className="form-style"
+                className="w-full rounded-[0.5rem] bg-gray-700 p-[12px] text-white outline-none"
                 {...register("confirmPassword", { required: true })}
               />
               <span

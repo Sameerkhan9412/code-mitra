@@ -16,12 +16,12 @@ import './App.css'
 import { Toaster } from "react-hot-toast";
 import ForgetPassword from "./pages/ForgetPassword";
 import UpdatePassword from "./pages/UpdatePassword";
-import Settings from "./components/Core/Dashboard/Settings";
-import PrivateRoute from "./components/Core/Auth/PrivateRoute";
-import Error from "./pages/Error";
 import OpenRoute from "./components/Core/Auth/OpenRoute";
 import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./components/Core/Auth/PrivateRoute";
 import EnrolledCourses from "./components/Core/Dashboard/EnrolledCourses";
+import Settings from "./components/Core/Dashboard/Settings";
+import PurchaseHistory from "./components/Core/Dashboard/PurchaseHistory";
 
 export default function App() {
   return (
@@ -32,23 +32,20 @@ export default function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/compiler" element={<Compiler/>}/>
         <Route path="/practice" element={<Practice/>}/>
-        <Route path="/practice" element={<Practice/>}/>
         <Route path="/notes"  element={<Notes/>}/>
         <Route path="/jobs"  element={<Job/>}/>
-        <Route path="/signup"  element={<OpenRoute><Signup/></OpenRoute>}/>
         <Route path="/login"  element={<OpenRoute><Login/></OpenRoute>}/>
+        <Route path="/signup"  element={<OpenRoute><Signup/></OpenRoute>}/>
         <Route path="/verify-email"  element={<OpenRoute><VerifyEmail/></OpenRoute>}/>
         <Route path="/forgot-password"  element={<OpenRoute><ForgetPassword/></OpenRoute>}/>
-        <Route path="/update-password/:id"  element={<UpdatePassword/>}/>
-        <Route element={<PrivateRoute>
-          <Dashboard/>
-        </PrivateRoute>}>
-        <Route path="dashboard/my-profile" element={<MyProfile/>}/>
-        <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
-        <Route path="dashboard/settings" element={<Settings/>}/>
+        <Route path="/update-password/:id"  element={<OpenRoute><UpdatePassword/></OpenRoute>}/>
+        <Route path="/dashboard"  element={<PrivateRoute><Dashboard/></PrivateRoute>}>
+          <Route path="my-profile" element={<MyProfile/>}/>
+          <Route path="enrolled-courses" element={<PrivateRoute><EnrolledCourses/></PrivateRoute>}/>
+          <Route path="purchase-history" element={<PrivateRoute><PurchaseHistory/></PrivateRoute>}/>
+          <Route path="settings" element={<PrivateRoute><Settings/></PrivateRoute>}/>
         </Route>
-
-        <Route path="*" element={<Error/>}/>
+        
         <Route path="/contact"  element={<Contact/>}/>
         <Route path="/about"  element={<About/>}/>
 

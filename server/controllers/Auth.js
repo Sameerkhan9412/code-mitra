@@ -136,7 +136,7 @@ exports.login=async(req,res)=>{
             })
         }
         // check user is alreadt exist or not
-        const user=await User.findOne({email});
+        const user=await User.findOne({email}).populate('additionalDetails');
         console.log(user)
         if(!user){
             return res.status(401).json({
@@ -187,21 +187,48 @@ exports.login=async(req,res)=>{
 }
 
 //change Password:
-exports.changePassword=async(req,res)=>{
-    // get data from request body
-    const {oldPassword,newPassword,confirmNewPassword}=req.body;
-    // validation
-    if(!oldPassword||!newPassword||!confirmNewPassword){
-        return res.status(403).json({
-            success:false,
-            message:`All fields are required , please try again`
-        })
+exports.changePassword = async (req, res) => {
+    console.log(req.body)
+    try {
+        // Get user data from req.user
+        const userDetails = await User.findById(req.user.id)
+        
+        // Get old password, new password, and confirm new password from req.body
+        const { oldPassword, newPassword } = req.body
+        const isPasswordMatch = await bcrypt.compare(
+          oldPassword,
+          userDetails.password
+        )
+  
+      // Validate old password
+      if (!isPasswordMatch) {
+        // If old password does not match, return a 401 (Unauthorized) error
+        return res
+          .status(401)
+          .json({ success: false, message: "The password is incorrect" })
+      }
+  
+      // Update password
+      const encryptedPassword = await bcrypt.hash(newPassword, 10)
+      const updatedUserDetails = await User.findByIdAndUpdate(
+        req.user.id,
+        { password: encryptedPassword },
+        { new: true }
+      )
+      return res.status(200).json({
+        success:true,
+        message:"Password Updated Successfully",
+      })
+  
     }
-    // update password db
+catch (error) {
+    res.status(500).json({
+        success:false,
+        message:'something went wrong try again',
+        error:error.message
+    })
+}  
+} 
     
-    // send email->password updated
-    // return response
-
-}
 
 
