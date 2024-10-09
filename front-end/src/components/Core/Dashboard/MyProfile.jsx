@@ -9,7 +9,7 @@ export default function MyProfile() {
   const navigate = useNavigate()
 
   return (
-    <>
+    <div className=" custum-scrollbar">
       <h1 className="mb-4 text-3xl font-medium ">
         My Profile
       </h1>
@@ -116,6 +116,6 @@ export default function MyProfile() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
