@@ -1,3 +1,4 @@
+import { ShoppingCart } from "lucide-react"
 import * as Icons from "react-icons/vsc"
 import { useDispatch } from "react-redux"
 import { NavLink, matchPath, useLocation } from "react-router-dom"
@@ -10,6 +11,7 @@ export default function SidebarLink({ link, iconName }) {
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname)
   }
+
 
   return (
     <NavLink

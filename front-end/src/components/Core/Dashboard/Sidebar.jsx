@@ -8,7 +8,9 @@ import { logout } from '../../../services/operations/authAPI'
 import { VscSignOut } from 'react-icons/vsc'
 import ConfirmationModal from '../../common/ConfirmationModal'
 
+
 const Sidebar = () => {
+
     const {loading:authLoading}=useSelector((state)=>state.auth)
     const {user,loading:profileLoading}=useSelector((state)=>state.profile)
     const dispatch=useDispatch()
@@ -27,6 +29,7 @@ const Sidebar = () => {
               <SidebarLinks key={link.id} link={link} iconName={link.icon} />
             )
           })}
+          
         </div>
         <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-gray-700" id="SideBar"/>
         <div className="flex flex-col">
@@ -34,6 +37,7 @@ const Sidebar = () => {
             link={{ name: "Settings", path: "/dashboard/settings" }}
             iconName="VscSettingsGear"
           />
+          
           <button
             onClick={() =>
               setConfirmationModal({

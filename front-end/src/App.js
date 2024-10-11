@@ -22,6 +22,7 @@ import PrivateRoute from "./components/Core/Auth/PrivateRoute";
 import EnrolledCourses from "./components/Core/Dashboard/EnrolledCourses";
 import Settings from "./components/Core/Dashboard/Settings";
 import PurchaseHistory from "./components/Core/Dashboard/PurchaseHistory";
+import Cart from "./components/Core/Dashboard/Cart";
 
 export default function App() {
   return (
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="enrolled-courses" element={<PrivateRoute><EnrolledCourses/></PrivateRoute>}/>
           <Route path="purchase-history" element={<PrivateRoute><PurchaseHistory/></PrivateRoute>}/>
           <Route path="settings" element={<PrivateRoute><Settings/></PrivateRoute>}/>
+          <Route path="cart" element={<PrivateRoute><Cart/></PrivateRoute>}/>
         </Route>
         
         <Route path="/contact"  element={<Contact/>}/>
