@@ -23,8 +23,12 @@ import EnrolledCourses from "./components/Core/Dashboard/EnrolledCourses";
 import Settings from "./components/Core/Dashboard/Settings";
 import PurchaseHistory from "./components/Core/Dashboard/PurchaseHistory";
 import Cart from "./components/Core/Dashboard/Cart";
+import { useSelector } from "react-redux";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import AddCourse from "./components/Core/Dashboard/AddCourse";
 
 export default function App() {
+  const { user } = useSelector((state) => state.profile)
   return (
     <div className="App bg-black text-white min-h-screen relative">
       <Toaster/>
@@ -46,11 +50,29 @@ export default function App() {
           <Route path="purchase-history" element={<PrivateRoute><PurchaseHistory/></PrivateRoute>}/>
           <Route path="settings" element={<PrivateRoute><Settings/></PrivateRoute>}/>
           <Route path="cart" element={<PrivateRoute><Cart/></PrivateRoute>}/>
+        {
+        user?.accountType === ACCOUNT_TYPE.STUDENT && (
+          <>
+          <Route path="cart" element={<Cart />} />
+          <Route path="enrolled-courses" element={<EnrolledCourses />} />
+          </>
+        )
+      }
+
+        {
+        user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+          <>
+          {/* <Route path="dashboard/instructor" element={<Instructor />} /> */}
+          <Route path="add-course" element={<AddCourse/>} />
+          {/* <Route path="dashboard/my-courses" element={<MyCourses />} /> */}
+          {/* <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} /> */}
+          </>
+        )
+      }
         </Route>
         
         <Route path="/contact"  element={<Contact/>}/>
         <Route path="/about"  element={<About/>}/>
-
 
 
       </Routes>
