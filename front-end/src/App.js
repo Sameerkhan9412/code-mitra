@@ -26,6 +26,7 @@ import Cart from "./components/Core/Dashboard/Cart";
 import { useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import AddCourse from "./components/Core/Dashboard/AddCourse";
+import Catalog from "./pages/Catalog";
 
 export default function App() {
   const { user } = useSelector((state) => state.profile)
@@ -35,6 +36,7 @@ export default function App() {
         <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/courses/:catalogName" element={<Catalog/>} />
         <Route path="/compiler" element={<Compiler/>}/>
         <Route path="/practice" element={<Practice/>}/>
         <Route path="/notes"  element={<Notes/>}/>
