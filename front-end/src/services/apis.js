@@ -16,6 +16,13 @@ export const profileEndpoints = {
   GET_INSTRUCTOR_DATA_API:BASE_URL + "/profile/instructorDashboard",
 }
 
+// STUDENTS ENDPOINTS
+export const studentEndpoints = {
+  COURSE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
+  COURSE_VERIFY_API: BASE_URL + "/payment/verifyPayment",
+  SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/sendPaymentSuccessEmail",
+}
+
 // SETTINGS PAGE API
 export const settingsEndpoints = {
   UPDATE_DISPLAY_PICTURE_API: BASE_URL + "/profile/updateDisplayPicture",
