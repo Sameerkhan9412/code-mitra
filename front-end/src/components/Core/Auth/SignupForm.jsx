@@ -90,7 +90,7 @@ function SignupForm() {
         <div className="flex gap-x-4">
           <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
-              First Name <sup className=" text-blue">*</sup>
+              First Name <sup className=" text-red-500">*</sup>
             </p>
             <input
               required
@@ -102,12 +102,12 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-black p-[12px] text-white outline-none"
+              className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none"
             />
           </label>
           <label>
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
-              Last Name <sup className="text-pink-200">*</sup>
+              Last Name <sup className="text-pink-500">*</sup>
             </p>
             <input
               required
@@ -119,13 +119,13 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-black p-[12px] text-white outline-none"
+              className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none"
             />
           </label>
         </div>
         <label className="w-full">
           <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
-            Email Address <sup className="text-pink-200">*</sup>
+            Email Address <sup className="text-pink-500">*</sup>
           </p>
           <input
             required
@@ -137,13 +137,13 @@ function SignupForm() {
             style={{
               boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
             }}
-            className="w-full rounded-[0.5rem] bg-black p-[12px] text-white outline-none"
+            className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none"
           />
         </label>
         <div className="flex gap-x-4">
           <label className="relative">
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
-              Create Password <sup className="text-pink-200">*</sup>
+              Create Password <sup className="text-pink-500">*</sup>
             </p>
             <input
               required
@@ -155,7 +155,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-black p-[12px] pr-10 text-white outline-none"
+              className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] pr-10 text-white outline-none"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
@@ -170,7 +170,7 @@ function SignupForm() {
           </label>
           <label className="relative">
             <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
-              Confirm Password <sup className="text-pink-200">*</sup>
+              Confirm Password <sup className="text-pink-500">*</sup>
             </p>
             <input
               required
@@ -182,7 +182,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-black p-[12px] pr-10 text-white outline-none"
+              className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] pr-10 text-white outline-none"
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -198,7 +198,7 @@ function SignupForm() {
         </div>
         <button
           type="submit"
-          className="mt-6 rounded-[8px] bg-blue py-[8px] px-[12px] font-medium text-black"
+          className="mt-6 rounded-[8px] bg-richblue-700 py-[8px] px-[12px] font-bold text-white hover:bg-richblue-300 "
         >
           Create Account
         </button>

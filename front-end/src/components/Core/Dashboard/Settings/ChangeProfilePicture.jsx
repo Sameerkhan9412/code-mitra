@@ -58,7 +58,7 @@ export default function ChangeProfilePicture() {
   }, [imageFile])
   return (
     <>
-      <div className="flex items-center justify-between rounded-md border-[1px] border-gray-700 bg-gray-800 p-4 px-8">
+      <div className="flex items-center justify-between rounded-md border-[1px] border-gray-700 bg-richblue-800 p-4 px-8">
         <div className="flex items-center gap-x-4">
           <img
             src={previewSource || user?.image}
@@ -87,7 +87,7 @@ export default function ChangeProfilePicture() {
                 onclick={handleFileUpload}
               >
                 {!loading && (
-                  <FiUpload className="text-lg text-gray-900" />
+                  <FiUpload className="text-lg text-white" />
                 )}
               </IconBtn>
             </div>

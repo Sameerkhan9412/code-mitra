@@ -37,7 +37,7 @@ function LoginForm() {
     >
       <label className="w-full">
         <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
-          Email Address <sup className="text-pink-200">*</sup>
+          Email Address <sup className="text-red-500 font-bold">*</sup>
         </p>
         <input
           required
@@ -49,7 +49,7 @@ function LoginForm() {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-black p-[12px] text-white outline-none"
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none"
         />
       </label>
       <label className="relative">
@@ -66,7 +66,7 @@ function LoginForm() {
           style={{
             boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
           }}
-          className="w-full rounded-[0.5rem] bg-black p-[12px] pr-12 text-white outline-none"
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] pr-12 text-white outline-none"
         />
         <span
           onClick={() => setShowPassword((prev) => !prev)}
@@ -86,9 +86,9 @@ function LoginForm() {
       </label>
       <button
         type="submit"
-        className="mt-6 rounded-[8px] bg-blue-50 py-[8px] px-[12px] font-medium text-black bg-blue"
+        className="mt-6 rounded-[8px] bg-richblue-700 py-[8px] px-[12px] text-white font-bold hover:bg-richblue-300" 
       >
-        Sign In
+        sign In
       </button>
     </form>
   )

@@ -10,6 +10,14 @@ module.exports = {
         white:"#FEFEFE",
         // blue:"#FFD700",
         blue:"#4886EE",
+        richblue:{
+          900:"#131327",
+          800:"#181835",
+          700:"#1D4ED8",
+          600:"#2B82F6",
+          400:"#4F46E5",
+          300:"#3D72E0",
+        },
         richblack: {
           5: "#F1F2FF",
           25: "#DBDDEA",

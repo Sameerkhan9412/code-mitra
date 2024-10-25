@@ -31,7 +31,7 @@ import Catalog from "./pages/Catalog";
 export default function App() {
   const { user } = useSelector((state) => state.profile)
   return (
-    <div className="App bg-black text-white min-h-screen relative">
+    <div className="App bg-richblue-900 text-white min-h-screen relative">
       <Toaster/>
         <Navbar/>
       <Routes>

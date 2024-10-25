@@ -17,7 +17,7 @@ function Template({ title, description, image, formType }) {
               {title}
             </h1>
             <p className="mt-4 text-[1.125rem] leading-[1.625rem]">
-              <span className="font-edu-sa font-bold italic text-blue">
+              <span className="font-edu-sa font-bold italic text-richblue-600 text-2xl">
                 {description}
               </span>
             </p>
@@ -30,7 +30,7 @@ function Template({ title, description, image, formType }) {
               width={558}
               height={504}
               loading="lazy"
-              className="border-blue border-r-8 border-b-8 rounded-md object-cover"
+              className="border-richblue-600 border-r-8 border-b-8 rounded-md object-cover"
             />
           </div>
         </div>

@@ -1,3 +1,10 @@
+:root {
+  --color-variant1-light: #1D4ED8;
+  --color-variant1-dark: hsl(224, 83%, 51%);
+  --color-variant2: #ffffff;
+}
+
+
 body::-webkit-scrollbar {
   width: 12px;               /* width of the entire scrollbar */
 }
@@ -7,7 +14,7 @@ body::-webkit-scrollbar-track {
 }
 
 .body::-webkit-scrollbar-thumb {
-  background-color: #4886EE;    /* color of the scroll thumb */
+  background-color: #1D4ED8;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
 }
 
@@ -53,3 +60,4 @@ body::-webkit-scrollbar-track {
   background-color: #4886EE;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
 }
+

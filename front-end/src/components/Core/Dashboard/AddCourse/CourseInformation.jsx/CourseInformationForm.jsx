@@ -158,12 +158,12 @@ export default function CourseInformationForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6"
+      className="space-y-8 rounded-md border-[1px] border-gray-700 bg-richblue-800 p-6"
     >
       {/* Course Title */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm " htmlFor="courseTitle">
-          Course Title <sup className="">*</sup>
+          Course Title <sup className="text-red-500 font-bold">*</sup>
         </label>
         <input
           id="courseTitle"
