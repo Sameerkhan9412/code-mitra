@@ -1,0 +1,49 @@
+/* Styling the previous button */
+.swiper-button-prev {
+    background-color: #3498db; /* Blue background */
+    color: #fff; /* White arrow */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Make it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  
+  /* Styling the next button */
+  .swiper-button-next {
+    color: white; /* White arrow */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Make it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2px;
+    font-weight: bolder;
+    background: #2B82F6;
+  }
+  .swiper-button-next:after,.swiper-button-prev:after{
+    font-size: 20px;
+    font-weight: 900;
+    padding: 10px;
+    transition: all;
+  }
+  
+  /* Adding hover effect */
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    background-color: #3D72E0; /* Darker color on hover */
+    scale: 1.2;
+  }
+  
+  /* Optional: Changing the position */
+  .swiper-button-prev {
+    left: 10px; /* Adjust distance from the left */
+  }
+  
+  .swiper-button-next {
+    right: 10px; /* Adjust distance from the right */
+  }
+  

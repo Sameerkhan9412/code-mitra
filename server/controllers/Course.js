@@ -23,6 +23,7 @@ exports.createCourse = async (req, res) => {
 
 		// Get thumbnail image from request files
 		const thumbnail = req.files.thumbnailImage;
+    console.log("this is instructor",instructions);
 
 		// Check if any of the required fields are missing
 		if (

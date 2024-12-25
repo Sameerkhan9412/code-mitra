@@ -9,24 +9,41 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import './CourseSlider.css'
+
+
+// import { getAllCourses } from "../../services/operations/courseDetailsAPI"
 import CourseCard from "./CourseCard"
 
+
 function Course_Slider({ Courses }) {
-  console.log(Courses)
   return (
     <>
-      {Courses?.length ? (
-        <div
-          className="max-h-[30rem] grid  gap-4 grid-cols-3" 
+    {Courses.length > 0 ? (
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={25}
+          loop={true}
+          modules={[FreeMode, Pagination, Autoplay, Navigation]}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          navigation
+          pagination={{ clickable: true }}
+          freeMode={true}
+          breakpoints={{
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          className="max-h-[30rem]"
         >
-          {Courses?.map((course, i) => (
-            <div key={i}>
-              <CourseCard course={course} Height={"h-[250px]"} />
-            </div>
+          {Courses.map((course, i) => (
+            <SwiperSlide key={i}>
+              <CourseCard course={course}  />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       ) : (
-        <p className="text-xl text-richblack-5">No Course Found</p>
+        <p className="text-xl">No Course Found</p>
       )}
     </>
   )

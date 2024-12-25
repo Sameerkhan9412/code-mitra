@@ -76,6 +76,9 @@ exports.categoryPageDetails = async (req, res) => {
 		console.log("No courses found for the selected category.")
 		return res.status(202).json({
 		  success: true,
+		  data:{
+			selectedCategory,
+		  },
 		  message: "No courses found for the selected category.",
 		})
 	  }

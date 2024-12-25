@@ -59,25 +59,21 @@ const Catalog = () => {
     <>
     {/* hero section */}
     <div className='box-content  px-4'>
-      <div className='mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent '>
+      <div className='mx-auto flex min-h-[260px]  flex-col justify-center gap-4 text-lg '>
         <p className=''>{`Home/Catalog/`}
-        <span className='text-richblue-600'> 
+        <span className='text-richblue-600 font-semibold'> 
           {catalogPageData?.data?.selectedCategory?.name}
           </span></p>
-        <p className='text-3xl font-bold'>{catalogPageData?.data?.selectedCategory?.name}</p>
+        <p className='text-3xl font-semibold text-richblue-600'>{catalogPageData?.data?.selectedCategory?.name}</p>
         <p className='max-w-[870px] '>{catalogPageData?.data?.selectedCategory?.description}</p>
       </div>
        {/* Section 1 */}
-      <div className=" mx-auto box-content w-full max-w-maxContentTab py-2 lg:max-w-maxContent">
-        <div className="font-bold text-4xl">Famous Youtube Playlist</div>
+      <div className=" mx-auto box-content w-full py-2">
+        <div className="font-bold text-4xl p-2 mb-2">Famous Youtube Playlist</div>
         <div className=''>
           <CourseSlider
             Courses={catalogPageData?.data?.selectedCategory?.courses}
           />
-          <CourseSlider
-            Courses={catalogPageData?.data?.selectedCategory?.courses}
-          />
-          
         </div>
       </div>
        {/* Section 1 */}
@@ -90,19 +86,18 @@ const Catalog = () => {
           <p>
             New
           </p>
+          <p>
+            Trending
+          </p>
         </div>
         <div className=''>
           <CourseSlider
             Courses={catalogPageData?.data?.selectedCategory?.courses}
           />
-          <CourseSlider
-            Courses={catalogPageData?.data?.selectedCategory?.courses}
-          />
-          
         </div>
       </div>
       {/* Section 2 */}
-      <div className=" mx-auto box-content w-full max-w-maxContentTab py-2 lg:max-w-maxContent ">
+      <div className=" mx-auto box-content w-full  py-2  ">
         <div className="">
         <div className="font-bold text-4xl mb-2">
           Top courses in {catalogPageData?.data?.differentCategory?.name}
@@ -110,16 +105,11 @@ const Catalog = () => {
           <CourseSlider
             Courses={catalogPageData?.data?.selectedCategory?.courses}
           />
-        </div>
-        <div className="py-8">
-          <CourseSlider
-            Courses={catalogPageData?.data?.differentCategory?.courses}
-          />
-        </div>
+          </div>
       </div>
 
       {/* Section 3 */}
-      <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-8 lg:max-w-maxContent">
+      <div className=" mx-auto box-content w-full py-8">
       <div className="font-bold text-4xl">Frequently Bought</div>
         <div className="py-2">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">

@@ -23,28 +23,29 @@ function CourseCard({ course, Height }) {
 
   return (
     <>
-      <Link to={`/courses/${course._id}`}>
+     <Link to={`/course-details/${course._id}` } className="">
         <div className="">
-          <div className="rounded-lg">
+          <div className="rounded-lg ">
             <img
               src={course?.thumbnail}
               alt="course thumnail"
-              className={`${Height} w-full rounded-xl object-cover `}
+              className={` w-full rounded-xl object-cover `}
             />
           </div>
           <div className="flex flex-col gap-2 px-1 py-3">
-            <p className="text-xl text-white font-bold">{title}</p>
-            <p className="text-sm text-white flex gap-2">
-              <img src={course?.instructor?.image} alt="image" className="w-6 rounded-full" />{course?.instructor?.firstName} {course.instructor.lastName}
+            <p className="text-xl text-richblack-5">{course?.courseName}</p>
+            <p className="text-sm text-gray-400 flex gap-2">
+              <img src={course.instructor.image} alt="" className="h-5 rounded-lg" />
+              {course?.instructor?.firstName} {course?.instructor?.lastName}
             </p>
             <div className="flex items-center gap-2">
-              <span className="text-white">{avgReviewCount || 0}</span>
+              <span className="text-richblue-600">{avgReviewCount || 0}</span>
               <RatingStars Review_Count={avgReviewCount} />
-              <span className="text-white">
+              <span className="text-richblue-600">
                 {course?.ratingAndReviews?.length} Ratings
               </span>
             </div>
-            <p className="text-xl text-richblack-5">Rs. {course?.price}</p>
+            <p className="text-xl text-richblue-500">Rs. {course?.price}</p>
           </div>
         </div>
       </Link>
