@@ -37,19 +37,20 @@ export async function buyCourse(token,courses,userDetails,navigate,dispatch){
         }
         // options
         const options={
-            key:process.env.RAZORPAY_KEY,
+            key:process.env.REACT_APP_RAZORPAY_KEY,
             currency:orderResponse.data.message.currency,
-            amount:`${orderResponse.data.message.amount}`,
+            amount:orderResponse.data.message.amount,
             order_id:orderResponse.data.message.id,
-            name:"StudyByte",
-            description:"Thank you for Purchasing the course",
+            name:"Code Mitra",
+            description:"Thank you for Purchasing",
             image:rzrLogo,
             prefill:{
                 name:`${userDetails.firstName}`,
-                email:userDetails.email
+                email:`${userDetails.email}`
             },
             handler:function(response){
                 // send successfully mail
+                sendPaymentSuccessEmail(response,orderResponse.data.amount,token)
                 // verify email
                 verifyPayment({...response,courses},token,navigate,dispatch)
             }
@@ -77,7 +78,7 @@ async function sendPaymentSuccessEmail(response,amount,token){
             paymentId:response.razorpay_payment_id,
             amount,
         },{
-            Authorization:`Bearer ${token}`
+            Authorization:`Bearer${token}`
         })
     } catch (error) {
             console.log("PAYMENT SUCCESS EMAIL ERROR",error);
@@ -91,7 +92,7 @@ async function verifyPayment(bodyData,token,navigate,dispatch){
     dispatch(setPaymentLoading(true))
     try {
         const response=await apiConnector("POST",COURSE_VERIFY_API,bodyData,{
-            Authorization:`Bearer ${token}`,
+            Authorization:`Bearer${token}`,
         });
         if(!response.data.success){
             throw new Error(response.data.message);

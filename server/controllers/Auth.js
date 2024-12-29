@@ -24,8 +24,6 @@ exports.sendOtp=async(req,res)=>{
             specialChars:false
         })
 
-        console.log("OTP generated successfully",otp);
-
         // check otp is unique or not
         const result=await OTP.findOne({otp:otp});
         while(result){
@@ -38,7 +36,7 @@ exports.sendOtp=async(req,res)=>{
         }
         // create an entry in db
         const otpBody=await OTP.create({email:email,otp:otp});
-        console.log(otpBody);
+        // console.log(otpBody);
         res.status(200).json({
             success:true,
             message:"OTP sent successfully",
@@ -137,7 +135,6 @@ exports.login=async(req,res)=>{
         }
         // check user is alreadt exist or not
         const user=await User.findOne({email}).populate('additionalDetails');
-        console.log(user)
         if(!user){
             return res.status(401).json({
                 success:false,
@@ -188,7 +185,6 @@ exports.login=async(req,res)=>{
 
 //change Password:
 exports.changePassword = async (req, res) => {
-    console.log(req.body)
     try {
         // Get user data from req.user
         const userDetails = await User.findById(req.user.id)
