@@ -12,6 +12,7 @@ const {
   editCourse,
   getInstructorCourses,
   deleteCourse,
+  getFullCourseDetails,
 } = require("../controllers/Course")
 
 
@@ -69,6 +70,8 @@ router.post("/addSubSection", auth, isInstructor, createSubSection)
 router.get("/getAllCourses", getAllCourses)
 // Get Details for a Specific Courses
 router.post("/getCourseDetails", getCourseDetails)
+// Get Details for a Specific Courses
+router.post("/getFullCourseDetails", auth, getFullCourseDetails)
 
 
 // Edit Course routes

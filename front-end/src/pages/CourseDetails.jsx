@@ -38,6 +38,7 @@ function CourseDetails() {
         setResponse(res);
       } catch (error) {
         console.log("Could not fetch Course Details");
+        console.log(error)
       }
     })();
   }, [courseId]);
@@ -209,7 +210,7 @@ function CourseDetails() {
             </div>
 
             {/* Course Details Accordion */}
-            <div className="py-4">
+            <div className="mt-2">
               {courseContent?.map((course, index) => (
                 <CourseAccordianBar
                   course={course}

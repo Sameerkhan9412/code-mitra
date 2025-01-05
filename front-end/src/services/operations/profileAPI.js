@@ -33,6 +33,7 @@ export function getUserDetails(token, navigate) {
 
 export async function getUserEnrolledCourses(token) {
   let result = []
+  console.log("again thsi token",token)
   try {
     const response = await apiConnector(
       "GET",

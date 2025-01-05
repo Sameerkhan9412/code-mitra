@@ -16,10 +16,10 @@ export default function CourseAccordianBar({ course, isActive, handleActive }) {
   }, [active])
 
   return (
-    <div className="overflow-hidden border border-solid border-richblue-600 bg-richblue-600 text-richblack-5 last:mb-0">
+    <div className="overflow-hidden border border-solid border-richblue-600 bg-richblue-600  rounded-md last:mb-0">
       <div>
         <div
-          className={`flex cursor-pointer items-start justify-between bg-opacity-20 px-7  py-6 transition-[0.3s]`}
+          className={`flex cursor-pointer items-start justify-between bg-opacity-20 p-2 transition-[0.3s]`}
           onClick={() => {
             handleActive(course._id)
           }}
@@ -35,7 +35,7 @@ export default function CourseAccordianBar({ course, isActive, handleActive }) {
             <p>{course?.sectionName}</p>
           </div>
           <div className="space-x-4">
-            <span className="text-yellow-25">
+            <span className="">
                {`${course.SubSection.length || 0} lecture(s)`}
             </span>
           </div>
@@ -43,12 +43,12 @@ export default function CourseAccordianBar({ course, isActive, handleActive }) {
       </div>
       <div
         ref={contentEl}
-        className={`relative h-0 overflow-hidden bg-richblack-900 transition-[height] duration-[0.35s] ease-[ease]`}
+        className={`relative h-0 overflow-hidden  transition-[height] duration-[0.35s] ease-[ease]`}
         style={{
           height: sectionHeight,
         }}
       >
-        <div className="text-textHead flex flex-col gap-2 px-7 py-6 font-semibold">
+        <div className="text-textHead flex flex-col gap-2 p-2 bg-richblue-700 pl-4  font-semibold">
           {course?.SubSection?.map((subSec, i) => {
             return <CourseSubSectionAccordion subSec={subSec} key={i} />
           })}

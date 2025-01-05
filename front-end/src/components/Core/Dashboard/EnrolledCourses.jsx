@@ -9,6 +9,7 @@ import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Spinner from '../../common/Spinner';
 
+
 const EnrolledCourses = () => {
     const { token } = useSelector((state) => state.auth)
     const navigate = useNavigate()
@@ -17,13 +18,16 @@ const EnrolledCourses = () => {
   
     useEffect(() => {
       ;(async () => {
+        console.log("token:",token)
         try {
+
           const res = await getUserEnrolledCourses(token) // Getting all the published and the drafted courses
           // Filtering the published course out
           const filterPublishCourse = res.filter((ele) => ele.status !== "Draft")
           setEnrolledCourses(filterPublishCourse)
         } catch (error) {
           console.log("Could not fetch enrolled courses.")
+          console.log(error)
         }
       })()
     }, [])
@@ -46,17 +50,17 @@ const EnrolledCourses = () => {
             {enrolledCourses.map((course, i) => (
               <div className='relative'>
                 <div className='relative'>
-                    <img src={course.thumbnail} alt="course image" className='rounded-lg ' />
+                    <img src={course.thumbnail} alt="course image" className='rounded-lg h-[200px] object-cover w-full overflow-hidden ' />
                     <div className='absolute inset-0 bg-black opacity-40 rounded-lg'></div>
                 </div>
-                    <p className='p-1 font-bold'>{course.courseName}</p>
+                    <p className='p-1 font-bold'>{course.courseName.length>32?course.courseName.slice(0,32)+"...":course.courseName}</p>
                     <button className=' text-center text-lg text-black bg-white w-full mt-2 rounded-md flex justify-center items-center gap-2 p-1' onClick={() => {
                   navigate(
                     `/view-course/${course?._id}/section/${course.courseContent?.[0]?._id}/sub-section/${course.courseContent?.[0]?.SubSection?.[0]?._id}`
                   )
                 }} ><MdOutlineSlowMotionVideo  className=' text-2xl'/>View Course</button>
                     <div className='w-12 absolute bottom-1/4 right-3 bg-white h-12 rounded-full p-1 '>
-                    <CircularProgressbar value={40||0} maxValue={100} text={`${course.progressPercentage||0 * 100}%`}  strokeWidth={12} styles={{
+                    <CircularProgressbar value={course.progressPercentage||0} maxValue={100} text={`${course.progressPercentage}%`}  strokeWidth={12} styles={{
                 path: {
                     stroke: `black`,
                 },
@@ -65,6 +69,7 @@ const EnrolledCourses = () => {
                 },text: {
                   fill: `black`,
                   fontSize: '26px',
+                  fontWeight:400
                 },
             }}/>
 

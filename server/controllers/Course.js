@@ -2,7 +2,8 @@ const Course = require("../models/Course");
 const Category = require("../models/Category");
 const User = require("../models/Users");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
-const {convertSecondsToDuration} =require('../utils/secToDuration')
+const {convertSecondsToDuration} =require('../utils/secToDuration');
+const CourseProgress = require("../models/CourseProgress");
 // Function to create a new course
 exports.createCourse = async (req, res) => {
 	try {
@@ -23,7 +24,6 @@ exports.createCourse = async (req, res) => {
 
 		// Get thumbnail image from request files
 		const thumbnail = req.files.thumbnailImage;
-    console.log("this is instructor",instructions);
 
 		// Check if any of the required fields are missing
 		if (
@@ -68,7 +68,7 @@ exports.createCourse = async (req, res) => {
 			thumbnail,
 			process.env.FOLDER_NAME
 		);
-		console.log(thumbnailImage);
+		// console.log(thumbnailImage);
 		// Create a new course with the given details
 		const newCourse = await Course.create({
 			courseName,
@@ -332,3 +332,48 @@ exports.deleteCourse = async (req, res) => {
       })
     }
   }
+
+exports.getFullCourseDetails = async (req, res) => {
+  try {
+      const {courseId} = req.body
+      const userId = req.user.id
+      const courseDetails = await Course.findOne({_id: courseId}).populate({
+          path: "instructor",
+          populate: {
+              path: "additionalDetails"
+          }
+      }).populate("category").populate("ratingAndReviews").populate({
+          path: "courseContent",
+          populate: {
+              path: "SubSection"
+          }
+      }).exec()
+
+      let courseProgressCount = await CourseProgress.findOne({courseID: courseId, userId: userId})
+
+      if (! courseDetails) {
+          return res.status(400).json({success: false, message: `Could not find course with id: ${courseId}`})
+      }
+
+      let totalDurationInSeconds = 0
+      courseDetails.courseContent.forEach((content) => {
+          content.SubSection.forEach((SubSection) => {
+              const timeDurationInSeconds = parseInt(SubSection.timeDuration)
+              totalDurationInSeconds += timeDurationInSeconds
+          })
+      })
+
+      const totalDuration = convertSecondsToDuration(totalDurationInSeconds)
+
+      return res.status(200).json({
+          success: true,
+          data: {
+              courseDetails,
+              totalDuration,
+              completedVideos: courseProgressCount ?. completedVideos ? courseProgressCount ?. completedVideos : []
+          }
+      })
+  } catch (error) {
+      return res.status(500).json({success: false, message: error.message})
+  }
+}

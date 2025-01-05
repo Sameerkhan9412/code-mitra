@@ -87,7 +87,6 @@ const Navbar = () => {
                                 <span>{totalItems}</span>
                             )
                         }
-                        sameer
                     </Link>
                    )
                 }

@@ -45,14 +45,14 @@ const ForgetPassword = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter email address"
-                  className="outline-none outline-1 outline-blue w-full p-2 rounded-md text-black bg-black text-white"
+                  className="outline-none outline-1 outline-blue w-full p-2 rounded-md text-black bg-richblue-800 text-white"
                 />
                                 </label>
                                 
                             )
 
                         }
-                        <button type='submit' className="mt-6 w-full rounded-[8px] bg-blue py-[12px] px-[12px] font-medium text-richblack-900">
+                        <button type='submit' className="mt-6 w-full rounded-[8px] bg-blue py-[12px] px-[12px] font-medium text-white">
                             {
                                 !emailSent?"Reset Password" :"Resend Email"
                             }

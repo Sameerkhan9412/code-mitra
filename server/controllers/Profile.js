@@ -1,6 +1,8 @@
 const Profile=require('../models/Profile')
 const User=require('../models/Users');
 const { uploadImageToCloudinary } = require('../utils/imageUploader');
+const { convertSecondsToDuration } = require('../utils/secToDuration');
+const CourseProgress = require("../models/CourseProgress")
 
 // update profile
 exports.updateProfile = async (req, res) => {
@@ -57,7 +59,6 @@ exports.updateProfile = async (req, res) => {
 exports.deleteAccount=async(req,res)=>{
     try {
         // get id
-        console.log(req.users)
         const id=req.user.id;
         // validation
         const userDetails=await User.findById(id)
@@ -114,7 +115,6 @@ exports.updateDisplayPicture = async (req, res) => {
         1000,
         1000
       )
-      console.log(image)
       const updatedProfile = await User.findByIdAndUpdate(
         { _id: userId },
         { image: image.secure_url },
@@ -134,27 +134,69 @@ exports.updateDisplayPicture = async (req, res) => {
 };
   
 exports.getEnrolledCourses = async (req, res) => {
-    try {
-      const userId = req.user.id
-      const userDetails = await User.findOne({
-        _id: userId,
-      })
-        .populate("courses")
-        .exec()
-      if (!userDetails) {
-        return res.status(400).json({
-          success: false,
-          message: `Could not find user with id: ${userDetails}`,
-        })
-      }
-      return res.status(200).json({
-        success: true,
-        data: userDetails.courses,
-      })
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: error.message,
-      })
-    }
-};
+  console.log("req header",req.header)
+	try {
+	  const userId = req.user.id
+	  let userDetails = await User.findOne({
+		_id: userId,
+	  })
+		.populate({
+		  path: "courses",
+		  populate: {
+			path: "courseContent",
+			populate: {
+			  path: "SubSection",
+			},
+		  },
+		})
+		.exec()
+	  userDetails = userDetails.toObject()
+	  var SubSectionLength = 0
+	  for (var i = 0; i < userDetails.courses.length; i++) {
+		let totalDurationInSeconds = 0
+		SubSectionLength = 0
+		for (var j = 0; j < userDetails.courses[i].courseContent.length; j++) {
+		  totalDurationInSeconds += userDetails.courses[i].courseContent[
+			j
+		  ].SubSection.reduce((acc, curr) => acc + parseInt(curr.timeDuration), 0)
+		  userDetails.courses[i].totalDuration = convertSecondsToDuration(
+			totalDurationInSeconds
+		  )
+		  SubSectionLength +=
+			userDetails.courses[i].courseContent[j].SubSection.length
+		}
+  
+		let courseProgressCount = await CourseProgress.findOne({
+		  courseID: userDetails.courses[i]._id,
+		  userId: userId,
+		})
+		courseProgressCount = courseProgressCount?.completedVideos.length
+		if (SubSectionLength === 0) {
+		  userDetails.courses[i].progressPercentage = 100
+		} else {
+		  // To make it up to 2 decimal point
+		  const multiplier = Math.pow(10, 2)
+		  userDetails.courses[i].progressPercentage =
+			Math.round(
+			  (courseProgressCount / SubSectionLength) * 100 * multiplier
+			) / multiplier
+		}
+	  }
+  
+	  if (!userDetails) {
+		return res.status(400).json({
+		  success: false,
+		  message: `Could not find user with id: ${userDetails}`,
+		})
+	  }
+	  return res.status(200).json({
+		success: true,
+		data: userDetails.courses,
+	  })
+	} catch (error) {
+	  return res.status(500).json({
+		success: false,
+		message: error.message,
+	  })
+	}
+  }

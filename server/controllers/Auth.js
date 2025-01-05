@@ -150,7 +150,7 @@ exports.login=async(req,res)=>{
         }
         if(await bcrypt.compare(password,user.password)){
             const token=jwt.sign(payload,process.env.JWT_SECRET,{
-                expiresIn:'2h'
+                expiresIn:'7d'
             })
             user.token=token;
             user.password=undefined;

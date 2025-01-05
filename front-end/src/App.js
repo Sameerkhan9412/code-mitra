@@ -28,6 +28,8 @@ import { ACCOUNT_TYPE } from "./utils/constants";
 import AddCourse from "./components/Core/Dashboard/AddCourse";
 import Catalog from "./pages/Catalog";
 import CourseDetails from "./pages/CourseDetails";
+import ViewCourse from "./pages/ViewCourse";
+import VideoDetails from "./components/Core/ViewCourse/VideoDetails";
 
 export default function App() {
   const { user } = useSelector((state) => state.profile)
@@ -74,7 +76,15 @@ export default function App() {
         )
       }
         </Route>
-        
+        <Route element={<PrivateRoute><ViewCourse/></PrivateRoute>}>
+          {
+            user?.accountType===ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId" element={<VideoDetails/>}/>
+              </>
+            )
+          }
+        </Route>
         <Route path="/contact"  element={<Contact/>}/>
         <Route path="/about"  element={<About/>}/>
 

@@ -20,9 +20,6 @@ const {
           email,
           checkUserPresent: true,
         })
-        // console.log("SENDOTP API RESPONSE............", response)
-  
-        // console.log(response.data.success)
   
   
         if (!response.data.success) {
@@ -86,8 +83,6 @@ const {
           email,
           password,
         })
-  
-        console.log("LOGIN API RESPONSE............", response)
   
         if (!response.data.success) {
           throw new Error(response.data.message)
