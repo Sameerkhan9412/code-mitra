@@ -11,9 +11,7 @@ export default function IconBtn({
       <button
         disabled={disabled}
         onClick={onclick}
-        className={`flex items-center text-white ${
-          outline ? "border border-white bg-transparent" : "bg-richblue-700 hover:bg-richblue-300"
-        } cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900 ${customClasses}`}
+        className={`flex items-center text-white bg-richblue-700 hover:bg-richblue-300 cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold  `}
         type={type}
       >
         {children ? (

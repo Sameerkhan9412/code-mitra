@@ -25,7 +25,9 @@ export default function RenderSteps() {
 
   return (
     <>
-      <div className="relative mb-2 flex w-full justify-center">
+    <div className="grid grid-cols-4">
+      <div className=" flex flex-col order-2">
+      <div className="">
         {steps.map((item) => (
           <>
             <div
@@ -33,7 +35,7 @@ export default function RenderSteps() {
               key={item.id}
             >
               <button
-                className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
+                className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full   ${
                   step === item.id
                     ? "bg-richblue-700"
                     : "border-gray-700 bg-gray-700 text-white"
@@ -45,13 +47,14 @@ export default function RenderSteps() {
                   item.id
                 )}
               </button>
+              <p className="font-bold">{item.title}</p>
               
             </div>
             {item.id !== steps.length && (
               <>
                 <div
-                  className={`h-[calc(34px/2)] w-[33%]  border-dashed border-b-2 ${
-                  step > item.id  ? "border-richblue-300" : "border-gray-500"
+                  className={`h-24 w-1 m-auto border-dashed mb-2 ${
+                  step > item.id  ? " bg-richblue-700" : "border-gray-500 bg-slate-700"
                 } `}
                 ></div>
               </>
@@ -59,31 +62,14 @@ export default function RenderSteps() {
           </>
         ))}
       </div>
-
-      <div className="relative mb-16 flex w-full select-none justify-between">
-        {steps.map((item) => (
-          <>
-            <div
-              className="flex min-w-[130px] flex-col items-center gap-y-2"
-              key={item.id}
-            >
-              
-              <p
-                className={`text-sm ${
-                  step >= item.id ? "" : ""
-                }`}
-              >
-                {item.title}
-              </p>
-            </div>
-            
-          </>
-        ))}
       </div>
       {/* Render specific component based on current step */}
+      <div className="col-span-3 order-1">
       {step === 1 && <CourseInformationForm />}
       {step === 2 && <CourseBuilderForm />}
       {step === 3 && <PublishCourse />} 
+      </div>
+    </div>
     </>
   )
 }

@@ -58,7 +58,7 @@ export default function PublishCourse() {
     }
 
     return (
-        <div className="rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
+        <div className="rounded-md border-2 border-gray-700 bg-richblue-800 p-6">
             <p className="text-2xl font-semibold text-richblack-5">
                 Publish Settings
             </p>
@@ -68,8 +68,8 @@ export default function PublishCourse() {
                 {/* Checkbox */}
                 <div className="my-6 mb-8">
                     <label htmlFor="public" className="inline-flex items-center text-lg">
-                        <input type="checkbox" id="public" {...register("public")} className="border-gray-300 h-4 w-4 rounded bg-richblack-500 text-richblack-400 focus:ring-2 focus:ring-richblack-5"/>
-                        <span className="ml-2 text-richblack-400">
+                        <input type="checkbox" id="public" {...register("public")} className="border-gray-300 h-4 w-4 rounded bg-richblack-500 text-richblack-400  outline-none"/>
+                        <span className="ml-2 text-richblack-400 cursor-pointer">
                             Make this course as public
                         </span>
                     </label>

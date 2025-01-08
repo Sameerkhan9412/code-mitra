@@ -91,20 +91,20 @@ const CourseBuilderForm = () => {
   }
 
   return (
-    <div className='space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6'>
+    <div className='space-y-8 rounded-md border-2 border-gray-700 bg-richblue-800 p-6'>
       <p className='text-2xl font-semibold text-richblack-5'>Course Builder</p>
       <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
         <div className='flex flex-col space-y-2'>
-          <label htmlFor='sectionName' className='text-sm text-richblack-5'>Section name <sup className='text-pink-200'>*</sup></label>
+          <label htmlFor='sectionName' className='text-sm text-richblack-5'>Section name <sup className='text-red-500'>*</sup></label>
           <input 
             id='sectionName'
             disabled={loading}
             placeholder='Add a section to build your course'
             {...register("sectionName", {required:true})}
-            className='form-style w-full'
+            className='w-full rounded-[0.5rem] bg-richblue-800 p-2 text-white outline-none border-2 border-gray-700'
           />
           {errors.sectionName && (
-            <span className='ml-2 text-xs tracking-wide text-pink-200'>Section Name is required</span>
+            <span className='ml-2 text-xs tracking-wide text-red-500'>Section Name is required</span>
           )}
         </div>
         <div className='flex items-end gap-x-4'>
@@ -136,7 +136,7 @@ const CourseBuilderForm = () => {
       <div className='flex justify-end gap-x-3'>
         <button
         onClick={goBack}
-        className='flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900 '>
+        className='flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblue-800 '>
           Back
         </button>
         <IconBtn text="Next" onclick={goToNext}>

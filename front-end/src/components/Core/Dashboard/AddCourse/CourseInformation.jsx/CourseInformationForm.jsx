@@ -83,10 +83,6 @@ export default function CourseInformationForm() {
     // console.log(data)
 
     if (editCourse) {
-      // const currentValues = getValues()
-      // console.log("changes after editing form values:", currentValues)
-      // console.log("now course:", course)
-      // console.log("Has Form Changed:", isFormUpdated())
       if (isFormUpdated()) {
         const currentValues = getValues()
         const formData = new FormData()
@@ -158,7 +154,7 @@ export default function CourseInformationForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-8 rounded-md border-[1px] border-gray-700 bg-richblue-800 p-6"
+      className="space-y-8 rounded-md border-2 border-gray-700 bg-richblue-800 p-4"
     >
       {/* Course Title */}
       <div className="flex flex-col space-y-2">
@@ -169,7 +165,7 @@ export default function CourseInformationForm() {
           id="courseTitle"
           placeholder="Enter Course Title"
           {...register("courseTitle", { required: true })}
-          className="form-style w-full"
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-2 border-gray-700 "
         />
         {errors.courseTitle && (
           <span className="ml-2 text-xs tracking-wide ">
@@ -180,16 +176,16 @@ export default function CourseInformationForm() {
       {/* Course Short Description */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm " htmlFor="courseShortDesc">
-          Course Short Description <sup className="">*</sup>
+          Course Short Description <sup className="text-red-500">*</sup>
         </label>
         <textarea
           id="courseShortDesc"
           placeholder="Enter Description"
           {...register("courseShortDesc", { required: true })}
-          className="form-style resize-x-none min-h-[130px] w-full"
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none resize-x-none min-h-[130px] border-2 border-gray-700 "
         />
         {errors.courseShortDesc && (
-          <span className="ml-2 text-xs tracking-wide text-pink-200">
+          <span className="ml-2 text-xs tracking-wide text-red-500">
             Course Description is required
           </span>
         )}
@@ -210,12 +206,12 @@ export default function CourseInformationForm() {
                 value: /^(0|[1-9]\d*)(\.\d+)?$/,
               },
             })}
-            className="form-style w-full !pl-12"
+            className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-2 border-gray-700 !pl-12"
           />
           <HiOutlineCurrencyRupee className="absolute left-3 top-1/2 inline-block -translate-y-1/2 text-2xl text-richblack-400" />
         </div>
         {errors.coursePrice && (
-          <span className="ml-2 text-xs tracking-wide text-pink-200">
+          <span className="ml-2 text-xs tracking-wide text-red-500">
             Course Price is required
           </span>
         )}
@@ -229,7 +225,7 @@ export default function CourseInformationForm() {
           {...register("courseCategory", { required: true })}
           defaultValue=""
           id="courseCategory"
-          className="form-style w-full"
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-2 border-gray-700 "
         >
           <option value="" disabled>
             Choose a Category
@@ -256,6 +252,7 @@ export default function CourseInformationForm() {
         errors={errors}
         setValue={setValue}
         getValues={getValues}
+        className=""
       />
       {/* Course Thumbnail Image */}
       <Upload
@@ -275,7 +272,7 @@ export default function CourseInformationForm() {
           id="courseBenefits"
           placeholder="Enter benefits of the course"
           {...register("courseBenefits", { required: true })}
-          className="form-style resize-x-none min-h-[130px] w-full"
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none resize-x-none min-h-[130px] border-2 border-gray-700"
         />
         {errors.courseBenefits && (
           <span className="ml-2 text-xs tracking-wide ">
