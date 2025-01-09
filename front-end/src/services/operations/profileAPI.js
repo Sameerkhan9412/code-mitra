@@ -55,7 +55,7 @@ export const getInstructorData=async(token)=> {
   let result = []
   try {
     const response = await apiConnector("GET", GET_INSTRUCTOR_DATA_API, null, {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer${token}`,
     })
     console.log("GET_INSTRUCTOR_DATA_API API RESPONSE............", response)
     result = response?.data?.courses

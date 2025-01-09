@@ -32,6 +32,7 @@ import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/Core/ViewCourse/VideoDetails";
 import MyCourses from "./components/Core/Dashboard/MyCourses";
 import EditCourse from "./components/Core/Dashboard/EditCourse";
+import Instructor from "./components/Core/Dashboard/InstructorDashboard/Instructor";
 
 export default function App() {
   const { user } = useSelector((state) => state.profile)
@@ -68,7 +69,7 @@ export default function App() {
       {
         user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
           <>
-          {/* <Route path="dashboard/instructor" element={<Instructor />} /> */}
+          <Route path="instructor" element={<Instructor />} />
           <Route path="add-course" element={<AddCourse/>} />
           <Route path="enrolled-courses" element={<EnrolledCourses />} />
           <Route path="my-courses" element={<MyCourses />} />
