@@ -154,7 +154,7 @@ export default function CourseInformationForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-8 rounded-md border-2 border-gray-700 bg-richblue-800 p-4"
+      className="space-y-8 rounded-md border-[1px] border-gray-700 bg-richblue-800 p-4"
     >
       {/* Course Title */}
       <div className="flex flex-col space-y-2">
@@ -165,7 +165,7 @@ export default function CourseInformationForm() {
           id="courseTitle"
           placeholder="Enter Course Title"
           {...register("courseTitle", { required: true })}
-          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-2 border-gray-700 "
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-[1px] border-gray-700 "
         />
         {errors.courseTitle && (
           <span className="ml-2 text-xs tracking-wide ">
@@ -182,7 +182,7 @@ export default function CourseInformationForm() {
           id="courseShortDesc"
           placeholder="Enter Description"
           {...register("courseShortDesc", { required: true })}
-          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none resize-x-none min-h-[130px] border-2 border-gray-700 "
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none resize-x-none min-h-[130px] border-[1px] border-gray-700 "
         />
         {errors.courseShortDesc && (
           <span className="ml-2 text-xs tracking-wide text-red-500">
@@ -206,7 +206,7 @@ export default function CourseInformationForm() {
                 value: /^(0|[1-9]\d*)(\.\d+)?$/,
               },
             })}
-            className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-2 border-gray-700 !pl-12"
+            className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-[1px] border-gray-700 !pl-12"
           />
           <HiOutlineCurrencyRupee className="absolute left-3 top-1/2 inline-block -translate-y-1/2 text-2xl text-richblack-400" />
         </div>
@@ -225,7 +225,7 @@ export default function CourseInformationForm() {
           {...register("courseCategory", { required: true })}
           defaultValue=""
           id="courseCategory"
-          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-2 border-gray-700 "
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none border-[1px] border-gray-700 "
         >
           <option value="" disabled>
             Choose a Category
@@ -272,7 +272,7 @@ export default function CourseInformationForm() {
           id="courseBenefits"
           placeholder="Enter benefits of the course"
           {...register("courseBenefits", { required: true })}
-          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none resize-x-none min-h-[130px] border-2 border-gray-700"
+          className="w-full rounded-[0.5rem] bg-richblue-800 p-[12px] text-white outline-none resize-x-none min-h-[130px] border-[1px] border-gray-700"
         />
         {errors.courseBenefits && (
           <span className="ml-2 text-xs tracking-wide ">
